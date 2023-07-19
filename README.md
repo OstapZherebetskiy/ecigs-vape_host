@@ -7,6 +7,7 @@
 - clone repository
 - cd REPO and run "`make var`"":
 - run "`poetry install`"
+- create "`.env`" file and fill all env variables, you can use .env.example
 - start dev server "`make run`" and open http://127.0.0.1:8000
 
 
