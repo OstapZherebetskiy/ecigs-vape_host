@@ -14,7 +14,6 @@ log = getLogger(__name__)
 
 @login_required
 def account_media_preview(request, path):
-    """ ADMIN ONLY """
     if request.user.has_perm('account.view_user') is True:
         if settings.PROTECTED_MEDIA_SERVER == 'django':
             response = serve(
