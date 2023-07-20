@@ -36,6 +36,7 @@ class Good(models.Model, DirtyFieldsMixin):
     photo = models.ImageField(_('Photo'), upload_to='goods/photos/%Y/%m/%d', blank=True, null=True)
     description = models.TextField(_(u'Description'), blank=True, null=True)
     in_stock = models.BooleanField(_(u'In stock'), default=True)
+    stock_count = models.IntegerField(_('Stock count'), default=0)
 
     class Meta:
         verbose_name = _(u'Good')
