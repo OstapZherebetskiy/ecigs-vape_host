@@ -32,6 +32,7 @@ class Order(DirtyFieldsMixin, models.Model):
     goods_count = models.IntegerField(_('Goods count'), default=0)
     status = models.CharField(_('Status'), max_length=20, choices=STATUS_CHOICES, blank=True, null=True)
     department = models.CharField(_(u'Department'), max_length=50, blank=True, null=True)
+    invoice = models.CharField(_(u'Invoice'), max_length=50, blank=True, null=True)
 
     created_at = models.DateTimeField(_(u'Date'), auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
