@@ -2,6 +2,7 @@
 
 import re
 from django.utils.translation import gettext as _
+from django.urls import reverse
 from rest_framework import serializers
 
 from account.models import User
@@ -16,7 +17,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['username', 'email', 'phone', 'first_name', 'last_name', 'photo',
+                  'is_active', 'is_admin', 'admin_access', 'deleted', 'email_verified',
+                  'verification_code', 'newsletter', 'about', 'default_department']
         read_only_fields = ['email_verified', 'is_active', 'is_admin', 'admin_access']
 
     def validate(self, data):
@@ -43,3 +46,8 @@ class UserSerializer(serializers.ModelSerializer):
                 del data['email']
 
         return data
+    
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['photo'] = reverse('account:protected_media_file', args=['photo']) if instance.photo else None
+        return ret

@@ -30,3 +30,23 @@ def account_media_preview(request, path):
             return response
     else:
         raise Http404()
+
+
+@login_required
+def account_media_view(request, field):
+    """ USER ONLY """
+    if value := getattr(request.user, field):
+        if settings.PROTECTED_MEDIA_SERVER == 'django':
+            response = serve(
+                request, value.name, document_root=f'{settings.VAR_DIR}/htdocs/media',
+                show_indexes=False
+            )
+            return response
+        else:
+            mimetype, encoding = mimetypes.guess_type(f'{value.path}')
+            response = HttpResponse()
+            response["Content-Type"] = mimetype
+            response['X-Accel-Redirect'] = f'{value.path.split("htdocs")[1]}'
+            return response
+    else:
+        raise Http404()
