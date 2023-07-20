@@ -48,3 +48,10 @@ class Good(models.Model, DirtyFieldsMixin):
     @staticmethod
     def available():
         return Good.objects.filter(in_stock=True)
+
+    def save(self, *args, **kwargs):
+        if self.stock_count == 0:
+            self.in_stock = False
+        elif self.stock_count > 0:
+            self.in_stock = True
+        super().save(*args, **kwargs)

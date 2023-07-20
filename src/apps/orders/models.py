@@ -16,11 +16,13 @@ class Order(DirtyFieldsMixin, models.Model):
     STATUS_NEW = 'new'
     STATUS_ACTIVE = 'active'
     STATUS_COMPLETED = 'completed'
+    STATUS_CANCELED = 'canceled'
 
     STATUS_CHOICES = (
         (STATUS_NEW, _(u'New')),
         (STATUS_ACTIVE, _(u'Active')),
         (STATUS_COMPLETED, _(u'Completed')),
+        (STATUS_CANCELED, _(u'Canceled'))
     )
 
     good = models.ForeignKey('goods.Good', on_delete=models.PROTECT, verbose_name='Good')
