@@ -34,7 +34,6 @@ def account_media_preview(request, path):
 
 @login_required
 def account_media_view(request, field):
-    """ USER ONLY """
     if value := getattr(request.user, field):
         if settings.PROTECTED_MEDIA_SERVER == 'django':
             response = serve(
