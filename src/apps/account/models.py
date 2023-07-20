@@ -57,8 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin, DirtyFieldsMixin):
     is_admin = models.BooleanField(default=False)
     admin_access = models.BooleanField(
         _(u'Is staff'),
-        default=False,
-        help_text='Designates whether the user can log into this admin site.',
+        default=False
     )
     deleted = models.BooleanField(default=False)
 
