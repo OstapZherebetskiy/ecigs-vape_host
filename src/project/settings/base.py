@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'drf_yasg',
+    'rest_framework_simplejwt',
 
     'project',
     'account',
@@ -64,6 +65,7 @@ from .database import *
 from .regional import *
 from .dbbackup import *
 from .templates import *
+from .additional import *
 
 LOCAL_MIDDLEWARE = ()
 LOCAL_APPS = ()
