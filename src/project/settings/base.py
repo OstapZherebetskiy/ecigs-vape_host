@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import os
 import sys
 from decouple import config
@@ -26,6 +27,8 @@ INSTALLED_APPS = [
 
     'project',
     'account',
+    'goods',
+    'orders'
 ]
 
 MIDDLEWARE = [
