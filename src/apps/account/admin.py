@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-__author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
 from django.contrib import admin
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import Group as DjangoGroup
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 
 from account.models import User
 
