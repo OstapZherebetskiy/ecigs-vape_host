@@ -24,6 +24,7 @@ class UserAdmin(BaseUserAdmin):
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': (
             ('first_name', 'last_name'),
+            ('phone',),
             ('photo',),
         )}),
         ('Verification', {
@@ -35,6 +36,9 @@ class UserAdmin(BaseUserAdmin):
         ('Permissions', {'fields': (
             ('is_active', 'is_admin', 'admin_access', 'newsletter'),
         )}),
+        ('Delivery', {'fields': (
+            ('default_department',),
+        )})
     )
     add_fieldsets = (
         (None, {

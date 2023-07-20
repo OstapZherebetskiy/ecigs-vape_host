@@ -48,6 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin, DirtyFieldsMixin):
     username = models.CharField(_(u'Username'), max_length=32, blank=True, null=True)
     email = models.EmailField(verbose_name=_(u'E-mail'), max_length=255, unique=True, 
                                 help_text=_(u'We\'ll never share your email with anyone else.'))
+    phone = models.CharField(_(u'Phone'), max_length=16, blank=True, null=True, unique=True)
     first_name = models.CharField(_(u'First name'), max_length=32, blank=True, null=True)
     last_name = models.CharField(_(u'Last name'), max_length=32, blank=True, null=True)
     photo = models.ImageField(_(u'Photo'), storage=ProtectedStorage, upload_to='protected/profile/photo/%Y/%m/%d', blank=True, null=True)
@@ -66,6 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin, DirtyFieldsMixin):
 
     newsletter = models.BooleanField(_(u'Newsletter'), default=False)
     about = models.TextField(_(u'About me'), blank=True, null=True)
+    default_department = models.CharField(_(u'Nova poshta department'), max_length=50, blank=True, null=True)
 
     objects = UserManager()
 
