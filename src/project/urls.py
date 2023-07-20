@@ -12,6 +12,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = i18n_patterns(
     re_path(r'^%s/' % settings.ADMIN_LOCATION_URL, admin.site.urls),
+    re_path(r'^api/', include('project.api.urls')),
     re_path(r'^account/', include('account.urls')),
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
 
