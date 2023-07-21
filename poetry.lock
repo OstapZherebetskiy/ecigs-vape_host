@@ -30,6 +30,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-cors-headers"
+version = "4.2.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-dirtyfields"
 version = "1.9.2"
 description = "Tracking dirty fields on a Django model instance."
@@ -200,11 +211,12 @@ python-versions = ">=3.6"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "7538f709cde227219abe963b07d0690833d9afba64d52ce3419eac668575f8ad"
+content-hash = "538a81e42e5b5c068ebdc920902ac594b37eb4292ec38c2f0be470df8ca67f9f"
 
 [metadata.files]
 asgiref = []
 django = []
+django-cors-headers = []
 django-dirtyfields = []
 djangorestframework = []
 djangorestframework-simplejwt = []
