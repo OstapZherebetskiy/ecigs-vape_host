@@ -6,6 +6,8 @@ from rest_framework.response import Response
 
 from .serializers import UserSerializer
 
+from account.tasks import task_send_email_verification_code
+
 
 
 class UserDetail(generics.RetrieveAPIView):
@@ -33,8 +35,8 @@ class UserUpdate(generics.UpdateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        # if 'email' in serializer.validated_data:
-        #     task_send_email_verification(self.request.user)
+        if 'email' in serializer.validated_data:
+            task_send_email_verification_code(self.request.user.id)
 
         self.request.user.refresh_from_db()
         return Response(UserSerializer(self.request.user).data)

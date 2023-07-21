@@ -20,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username', 'email', 'phone', 'first_name', 'last_name', 'photo',
                   'is_active', 'is_admin', 'admin_access', 'deleted', 'email_verified',
                   'verification_code', 'newsletter', 'about', 'default_department']
-        read_only_fields = ['email_verified', 'is_active', 'is_admin', 'admin_access']
+        read_only_fields = ['email_verified', 'is_active', 'is_admin', 'admin_access', 'verification_code']
 
     def validate(self, data):
 
