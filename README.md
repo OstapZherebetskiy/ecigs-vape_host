@@ -10,6 +10,11 @@
 - create "`.env`" file and fill all env variables, you can use .env.example
 - start dev server "`make run`" and open http://127.0.0.1:8000
 
+### Frontend installation (local start http://localhost:5174/)
+-  cd fe
+-  npm install
+-  npm run dev
+
 
 ## project python code structure
 src/apps - ours packages

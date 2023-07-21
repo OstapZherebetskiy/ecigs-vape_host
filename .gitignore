@@ -35,3 +35,6 @@ coverage.xml
 
 # Vscode stuff:
 *.vscode
+
+# fe ignore
+*node_modules
