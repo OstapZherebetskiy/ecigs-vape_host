@@ -22,10 +22,6 @@
       "@/components/*": ["./components/*"],
       "@/styles/*": ["./styles/*"],
       "@/api/*": ["./api/*"],
-      "@/store/*": ["./store/*"],
-      "@/common-ui/*": ["./common-ui/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/pages/*": ["./pages/*"]
     }
   },
   "include": ["src", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.scss"],
