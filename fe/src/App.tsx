@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { fetchJson } from './api'
+import { fetchJson } from './common/fetchJson'
 
 function App() {
   useEffect(() => {
