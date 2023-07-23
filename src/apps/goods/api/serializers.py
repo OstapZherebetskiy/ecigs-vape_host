@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from goods.models import Category
+from goods.models import Category, Good
 
 
 import logging
@@ -17,6 +17,17 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        return ret
+
+
+class GoodSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Good
+        fields = '__all__'
+    
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         return ret
