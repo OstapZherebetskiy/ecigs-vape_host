@@ -10,7 +10,6 @@ log = logging.getLogger(__name__)
 
 
 
-
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
