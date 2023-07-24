@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: [
+      { find: '@/common-ui', replacement: path.resolve(__dirname, 'src/common-ui') },
       { find: '@/common', replacement: path.resolve(__dirname, 'src/common') },
       { find: '@/components', replacement: path.resolve(__dirname, 'src/components') },
       { find: '@/styles', replacement: path.resolve(__dirname, 'src/styles') },

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { fetchJson } from './common/fetchJson'
+import { fetchJson } from '@/common/fetchJson'
+import ErrorBoundary from '@/common-ui/errorBoundary';
 
 function App() {
   useEffect(() => {
@@ -11,7 +12,11 @@ function App() {
     console.log(data)
   }
 
-  return <div>lalala</div>
+  return (
+    <ErrorBoundary>
+      <div>lalala</div>
+    </ErrorBoundary>
+  )
 }
 
 export default App
