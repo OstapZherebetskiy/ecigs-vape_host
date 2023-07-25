@@ -1,0 +1,21 @@
+@import '@/styles/global';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+}
+
+.card {
+  width: 230px;
+  border-radius: 6px;
+  border: 1px solid $c-grey;
+  padding: 15px 15px 10px;
+  background-color: $c-white;
+
+  .title {
+    color: $c-black;
+    width: 100%;
+    text-align: center;
+  }
+}
