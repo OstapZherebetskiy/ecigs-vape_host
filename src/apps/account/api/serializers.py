@@ -19,8 +19,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email', 'phone', 'first_name', 'last_name', 'photo',
                   'is_active', 'is_admin', 'admin_access', 'deleted', 'email_verified',
-                  'verification_code', 'newsletter', 'about', 'default_department', 'password']
-        read_only_fields = ['email_verified', 'is_active', 'is_admin', 'admin_access', 'verification_code']
+                  'newsletter', 'about', 'default_department', 'password']
+        read_only_fields = ['email_verified', 'is_active', 'is_admin', 'admin_access']
         extra_kwargs = {
             'password': {'write_only': True},
         }
