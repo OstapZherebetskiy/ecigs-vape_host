@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { fetchJson } from '@/common/fetchJson'
 import ErrorBoundary from '@/common-ui/errorBoundary'
-import { TextField } from './common-ui/text-field/TextField'
+import { Header } from '../src/components/header/Header'
+import { Footer } from '../src/components/footer/Footer'
 
 function App() {
   useEffect(() => {
@@ -15,8 +16,8 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <TextField />
-      <div>lalala</div>
+      <Header/>
+      <Footer/>
     </ErrorBoundary>
   )
 }

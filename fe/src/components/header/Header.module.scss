@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.container {
+  height: 100px;
+  max-width: $w-desktop;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.input {
+  margin-top: 18px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 500px;
+  height: 40px;
+  padding: 6px 28px 6px 14px;
+  box-sizing: border-box;
+  font: normal normal normal 13px/19px Lato;
+  color: $c-black;
+
+  &_icon {
+    position: relative;
+    max-width: 20px;
+    width: 100%;
+    left: 490px;
+    top: -29px;
+    border-radius: 0 10px 10px 0;
+  }
+}
+.account, .cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+
+  &_icon {
+    height: 23px;
+  }
+
+  &_text {
+    color: $c-black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+}
+
+@media (max-width: $w-notepad){
+  
+}
