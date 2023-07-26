@@ -42,8 +42,6 @@ class GoodListCreateAPIView(ListCreateAPIView):
             qs = qs.filter(name__icontains=name_segment)
         if name_full := query_params.get('name_full'):
             qs = qs.filter(name=name_full)
-        if name_full := query_params.get('name_full'):
-            qs = qs.filter(name=name_full)
         if price_up := query_params.get('price_up'):
             qs = qs.filter(price__lte=price_up)
         if price_bottom := query_params.get('price_bottom'):
