@@ -10,7 +10,6 @@ import logging
 log = logging.getLogger(__name__)
 
 
-
 class Category(models.Model, DirtyFieldsMixin):
     name = models.CharField(_(u'Name'), max_length=128)
     title = models.CharField(_(u'Title'), max_length=128, blank=True, null=True)
@@ -22,11 +21,10 @@ class Category(models.Model, DirtyFieldsMixin):
 
     def __str__(self):
         return self.name
-    
+
     @staticmethod
     def active():
         return Category.objects.filter(is_enabled=True)
-    
 
 
 class Good(models.Model, DirtyFieldsMixin):
@@ -65,7 +63,7 @@ class Good(models.Model, DirtyFieldsMixin):
 
     def __str__(self):
         return self.name
-    
+
     @staticmethod
     def available():
         return Good.objects.filter(in_stock=True)
