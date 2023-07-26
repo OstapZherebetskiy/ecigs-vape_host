@@ -15,6 +15,7 @@ export const ItemsGrid = () => {
 
     setProductList(data)
 
+    
     console.log(data)
   }
 
