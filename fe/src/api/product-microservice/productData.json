@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "asd",
+    "name": "asd sdfg dfgdf gdfg fdg",
     "price": null,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
     "in_stock": false,
@@ -121,7 +121,7 @@
   },
   {
     "id": 1,
-    "name": "asd",
+    "name": "asd fdg fdg fdg",
     "price": null,
     "description": "",
     "in_stock": false,
