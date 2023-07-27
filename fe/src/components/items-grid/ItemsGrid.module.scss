@@ -43,8 +43,12 @@
   .title {
     color: $c-black;
     width: 100%;
-    text-align: center;
     font-size: 24px;
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media (max-width: $w-tablet) {
       font-size: 18px;
