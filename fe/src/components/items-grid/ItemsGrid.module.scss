@@ -3,7 +3,16 @@
 .container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 25px;
   gap: 10px 15px;
+
+  @media (max-width: $w-tablet) {
+    gap: 6px 8px;
+    padding: 10px;
+  }
 }
 
 .card {
@@ -19,6 +28,11 @@
   justify-content: flex-end;
   box-shadow: 0px 2px 3px #00000070;
 
+  @media (max-width: $w-tablet) {
+    padding: 6px 6px 4px;
+    width: 150px;
+  }
+
   .box {
     display: flex;
     flex-direction: column;
@@ -31,6 +45,10 @@
     width: 100%;
     text-align: center;
     font-size: 24px;
+
+    @media (max-width: $w-tablet) {
+      font-size: 18px;
+    }
   }
 
   .present,
@@ -39,6 +57,11 @@
     color: $c-green;
     display: inline-block;
     margin-top: 10px;
+
+    @media (max-width: $w-tablet) {
+      margin-top: 6px;
+      font-size: 12px;
+    }
   }
 
   .absent {
@@ -51,6 +74,11 @@
     display: block;
     height: 48px;
     overflow-y: hidden;
+
+    @media (max-width: $w-tablet) {
+      font-size: 10px;
+      height: 52px;
+    }
   }
 
   .img {
@@ -72,6 +100,11 @@
 
   .price {
     margin-top: 8px;
+
+    @media (max-width: $w-tablet) {
+      margin-top: 4px;
+      font-size: 14px;
+    }
   }
 
   .btn {
