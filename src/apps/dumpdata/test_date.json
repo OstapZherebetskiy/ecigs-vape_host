@@ -1,0 +1,134 @@
+[
+    {
+        "model": "goods.Category",
+        "pk": 1,
+        "fields": {
+            "name": "test_category1",
+            "title": "test_category1 Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        }
+    },
+    {
+        "model": "goods.Category",
+        "pk": 2,
+        "fields": {
+            "name": "test_category2",
+            "title": "test_category2 Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        }
+    },
+    {
+        "model": "goods.Category",
+        "pk": 3,
+        "fields": {
+            "name": "test_category3",
+            "title": "test_category3 Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 1,
+        "fields": {
+            "name": "test1_no_stock",
+            "price": 10,
+            "description": "no_stock category1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": false,
+            "stock_count": 0,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 1
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 2,
+        "fields": {
+            "name": "test1_in_stock",
+            "price": 20,
+            "description": "in_stock category1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": true,
+            "stock_count": 10,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 1
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 3,
+        "fields": {
+            "name": "test2_no_stock",
+            "price": 10,
+            "description": "no_stock category2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": false,
+            "stock_count": 0,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 4,
+        "fields": {
+            "name": "test2_in_stock",
+            "price": 20,
+            "description": "in_stock category2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": true,
+            "stock_count": 10,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 5,
+        "fields": {
+            "name": "test3_no_stock",
+            "price": 10,
+            "description": "no_stock category3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": false,
+            "stock_count": 0,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.Good",
+        "pk": 6,
+        "fields": {
+            "name": "test3_in_stock",
+            "price": 20,
+            "description": "in_stock category3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, architecto nesciunt, possimus amet molestias, corporis quidem totam ea eum impedit ipsa repellat veniam voluptates aliquid et quia provident magni fuga.",
+            "in_stock": true,
+            "stock_count": 10,
+            "photo_1": null,
+            "photo_2": null,
+            "photo_3": null,
+            "photo_4": null,
+            "photo_5": null,
+            "main_photo": "https://storage.skidka.ua/iblock/f81/f81c0a4d343958c7fdf888757c8d4b89/75d37b5ac22fc49a41abd747286c3b80.jpg",
+            "category": 3
+        }
+    }
+]
