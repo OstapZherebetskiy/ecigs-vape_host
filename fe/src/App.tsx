@@ -1,5 +1,5 @@
 import ErrorBoundary from '@/common-ui/errorBoundary'
-import { ItemsGrid } from './components/items-grid'
+import { ItemsGrid } from '@/components/items-grid'
 
 function App() {
   return (

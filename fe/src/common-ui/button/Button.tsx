@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes } from 'react'
 import cn from 'classnames'
+import { Loader } from '@/common-ui/loader/Loader'
 
 import style from './Button.module.scss'
-import { Loader } from '../loader/Loader'
 
 type Props = {
   children: JSX.Element | JSX.Element[] | string
