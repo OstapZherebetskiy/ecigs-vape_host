@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { fetchJson } from '@/common/fetchJson'
-import ErrorBoundary from '@/common-ui/errorBoundary'
-import { Header } from '../src/components/header/Header'
-import { Footer } from '../src/components/footer/Footer'
+import { Layout } from './components/layout'
 
 function App() {
   useEffect(() => {
@@ -15,10 +13,9 @@ function App() {
   }
 
   return (
-    <ErrorBoundary>
-      <Header/>
-      <Footer/>
-    </ErrorBoundary>
+    <Layout>
+      <>fs</>
+    </Layout>
   )
 }
 

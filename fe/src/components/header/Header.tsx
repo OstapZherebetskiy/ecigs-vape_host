@@ -20,13 +20,6 @@ export const Header = () => {
           <img className={styles.cart_icon} src={cartImg} alt="cart" />
           <div className={styles.cart_text}>Кошик</div>
         </div>
-      </header>
-
-      <header className={styles.header_mobile}>
-        <form>
-          <input className={styles.input_mobile} type="text" placeholder="Я шукаю ..." />
-          <img src={searchImg} className={styles.input_icon_mobile} alt="search" />
-        </form>
         <div className={styles.menu_mobile}>
           <img className={styles.menu_icon_mobile} src={menuIMG} alt="menu" />
         </div>

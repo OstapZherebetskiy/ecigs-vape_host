@@ -1,6 +1,9 @@
-@import '../../styles/variables.scss';
+@import '@/styles/global';
+
 
 .header {
+    max-width: $w-max-screen;
+  margin: auto;
   height: 100px;
   max-width: $w-desktop;
   display: flex;
@@ -84,6 +87,7 @@
   }
   .input {
     &_mobile {
+      margin: auto;
       margin-top: 18px;
       background: #ffffff 0% 0% no-repeat padding-box;
       border: 1px solid #cccccc;
