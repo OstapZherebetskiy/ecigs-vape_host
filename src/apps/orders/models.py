@@ -10,7 +10,6 @@ import logging
 log = logging.getLogger(__name__)
 
 
-
 class Order(DirtyFieldsMixin, models.Model):
 
     STATUS_NEW = 'new'
@@ -43,3 +42,11 @@ class Order(DirtyFieldsMixin, models.Model):
 
     def __str__(self):
         return f'Order {self.id}'
+
+    def save(self, *args, **kwargs):
+        if self.goods_count <= 0:
+            raise ValueError("Goods count must be positive number")
+        if self.good.stock_count < self.goods_count:
+            super().save(*args, **kwargs)
+        else:
+            raise ValueError("You want to buy more goods than we have")
