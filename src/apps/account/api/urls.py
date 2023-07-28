@@ -2,10 +2,9 @@
 
 
 from django.urls import path
-from .viewsets import UserDetail, UserUpdate
+from .viewsets import UserAPI
 
 
 urlpatterns = [
-    path('profile/', UserDetail.as_view()),
-    path('profile/update/', UserUpdate.as_view()),
+    path('', UserAPI.as_view()),
 ]
