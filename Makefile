@@ -26,4 +26,4 @@ shell:
 	poetry run python src/manage.py shell
 
 dump:
-	poetry run python src/manage.py loaddata /Users/ostap/Documents/maks_pr/ecigs-vape/src/apps/dumpdata/test_date.json
+	poetry run python src/manage.py loaddata src/apps/dumpdata/test_date.json
