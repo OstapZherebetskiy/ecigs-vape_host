@@ -7,6 +7,6 @@ from .viewsets import CategoryListCreateView, GoodListCreateAPIView, GoodsRetrie
 urlpatterns = [
     path('category/', CategoryListCreateView.as_view()),
     path('category/<int:pk>/', CategoryRetrieveUpdateDestroyAPIView.as_view()),
-    path('/', GoodListCreateAPIView.as_view()),
+    path('', GoodListCreateAPIView.as_view()),
     path('<int:pk>/', GoodsRetrieveUpdateDestroyAPIView.as_view()),
 ]
