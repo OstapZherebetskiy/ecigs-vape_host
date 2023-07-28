@@ -1,12 +1,14 @@
 @import '../../styles/variables.scss';
 
-.container {
+.header {
   height: 100px;
   max-width: $w-desktop;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  &_mobile {
+    display: none;
+  }
 }
 .input {
   margin-top: 18px;
@@ -27,10 +29,10 @@
     width: 100%;
     left: 490px;
     top: -29px;
-    border-radius: 0 10px 10px 0;
   }
 }
-.account, .cart {
+.account,
+.cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,6 +52,65 @@
   }
 }
 
-@media (max-width: $w-notepad){
-  
+@media (max-width: $w-notepad) {
+  .input {
+    min-width: 400px;
+    &_icon {
+      left: 390px;
+    }
+  }
+  .account,
+  .cart {
+    &_icon {
+      height: 21px;
+    }
+    &_text {
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: $w-tablet) {
+  .header {
+    display: none;
+    &_mobile {
+      display: flex;
+      height: 100px;
+      max-width: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .input {
+    &_mobile {
+      margin-top: 18px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #cccccc;
+      border-radius: 10px;
+      width: 100%;
+      min-width: 250px;
+      height: 40px;
+      padding: 4px 17px 4px 10px;
+      box-sizing: border-box;
+      font: normal normal normal 13px/19px Lato;
+      color: $c-black;
+    }
+
+    &_icon_mobile {
+      position: relative;
+      max-width: 18px;
+      width: 100%;
+      left: 240px;
+      top: -28px;
+    }
+  }
+  .menu {
+    &_mobile {
+      margin-left: 10px;
+    }
+    &_icon_mobile {
+      height: 20px;
+    }
+  }
 }
