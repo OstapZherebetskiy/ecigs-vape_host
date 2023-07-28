@@ -1,11 +1,11 @@
-import ErrorBoundary from '@/common-ui/errorBoundary'
+import { Layout } from './components/layout'
 import { ItemsGrid } from '@/components/items-grid'
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ItemsGrid />
-    </ErrorBoundary>
+    <Layout>
+      <ItemsGrid/>
+    </Layout>
   )
 }
 
