@@ -1,0 +1,31 @@
+@import '@/styles/global';
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $c-grey-b;
+  ;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.account , .cart {
+margin-top: 50px;
+  &_icon {
+    height: 24px;
+  }
+  &_text{
+ //use new font//
+  }
+}
+
+.close{
+    margin-top: 60px;
+    ._icon{
+        height: 30px;
+    }
+}
