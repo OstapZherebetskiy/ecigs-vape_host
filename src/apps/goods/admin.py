@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from .models import Category, Good
+from .models import Category, Good, Characteristics, CharacteristicsType
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -17,3 +17,5 @@ class GoodsAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Good, GoodsAdmin)
+admin.site.register(Characteristics)
+admin.site.register(CharacteristicsType)
