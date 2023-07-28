@@ -22,6 +22,7 @@
   border: 1px solid $c-grey;
   padding: 15px 15px 10px;
   background-color: $c-grey-light;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;

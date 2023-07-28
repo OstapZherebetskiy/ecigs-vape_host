@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Menu } from "../menu/Menu";
+import { useState } from 'react'
+import { Menu } from '@/components/menu/Menu'
+
+import searchImg from '@/img/search.png'
+import accountImg from '@/img/account.png'
+import cartImg from '@/img/cart.png'
+import menuIMG from '@/img/menu.png'
 
 import styles from './Header.module.scss'
-import searchImg from '../img/search.png'
-import accountImg from '../img/account.png'
-import cartImg from '../img/cart.png'
-import menuIMG from '../img/menu.png'
 
 export const Header = () => {
-  const [isMenu, setIsMenu] = useState(false);
+  const [isMenu, setIsMenu] = useState(false)
 
-  const handlerClick = () =>{
-      console.log("click");
-      setIsMenu(!isMenu) ;
+  const handlerClick = () => {
+    console.log('click')
+    setIsMenu(!isMenu)
   }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -30,7 +32,7 @@ export const Header = () => {
           <div className={styles.cart_text}>Кошик</div>
         </div>
         <div className={styles.menu}>
-          <img className={styles.menu_icon} src={menuIMG} alt="menu" onClick={handlerClick}/>
+          <img className={styles.menu_icon} src={menuIMG} alt="menu" onClick={handlerClick} />
         </div>
         {isMenu && <Menu closeMenu={handlerClick} />}
       </header>

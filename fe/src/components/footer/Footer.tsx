@@ -1,5 +1,8 @@
+import { EMAIL, PHONE_NUM, TELEGRAM } from '@/common/constants'
+
+import logoImg from '@/img/logo.png'
+
 import styles from './Footer.module.scss'
-import logoImg from '../img/logo.png'
 
 export const Footer = () => {
   return (
@@ -8,14 +11,14 @@ export const Footer = () => {
         <div className={styles.items_logo}>
           <img className={styles.items_logo_img} src={logoImg} alt="logo" />
         </div>
-        <a href="https://t.me/ecigs_vapeshop" className={styles.message}>
+        <a href={TELEGRAM} className={styles.message}>
           Telegram
         </a>
-        <a href="mailto:ecigs.vs@gmail.com" className={styles.mail}>
-          Mail
+        <a href={`mailto:${EMAIL}`} className={styles.mail}>
+          Mail: {EMAIL}
         </a>
-        <a href="tel:+380981553973" className={styles.phone}>
-          +380981553973
+        <a href={`tel:${PHONE_NUM}`} className={styles.phone}>
+          {PHONE_NUM}
         </a>
       </div>
       <div className={styles.info_box}>
