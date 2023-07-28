@@ -1,72 +1,60 @@
 # -*- coding: utf-8 -*-
 
-from rest_framework import generics, viewsets, status
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+from project.permissions_classes.permissions_clases import GoodsPermission
 
 from .serializers import CategorySerializer, GoodSerializer
 
 from goods.models import Category, Good
 
 
-
-class CategoryListCreateView(generics.ListCreateAPIView):
+class CategoryListCreateView(ListCreateAPIView):
     serializer_class = CategorySerializer
-    permission_classes = [AllowAny]
+    permission_classes = [GoodsPermission]
 
     def get_queryset(self):
-        queryset = Category.objects.all()
-        return queryset
+        qs = Category.objects.all()
+        query_params = self.request.query_params
+        if name_segment := query_params.get('name_segment'):
+            qs = qs.filter(name__icontains=name_segment)
+        if name_full := query_params.get('name_full'):
+            qs = qs.filter(name=name_full)
+        return qs
 
 
-class GoodViewSet(viewsets.ViewSet):
+class CategoryRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [GoodsPermission]
+    queryset = Category.objects.all()
 
-    def get(self, request):
-        goods = Good.objects.all()
-        serializer = GoodSerializer(goods, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = GoodSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class GoodListCreateAPIView(ListCreateAPIView):
+    permission_classes = [GoodsPermission]
+    serializer_class = GoodSerializer
 
-    def retrieve(self, request, pk=None):
-        try:
-            good = Good.objects.get(pk=pk)
-            serializer = GoodSerializer(good)
-            return Response(serializer.data)
-        except Good.DoesNotExist:
-            return Response({"error": "Good not found."}, status=status.HTTP_404_NOT_FOUND)
+    def get_queryset(self):
+        qs = Good.objects.all()
+        query_params = self.request.query_params
+        if category_id := query_params.get('category_id'):
+            qs = qs.filter(category_id=category_id)
+        if name_segment := query_params.get('name_segment'):
+            qs = qs.filter(name__icontains=name_segment)
+        if name_full := query_params.get('name_full'):
+            qs = qs.filter(name=name_full)
+        if price_up := query_params.get('price_up'):
+            qs = qs.filter(price__lte=price_up)
+        if price_bottom := query_params.get('price_bottom'):
+            qs = qs.filter(price__gte=price_bottom)
+        if activity_status := query_params.get('activity_status'):
+            if activity_status == 'in_stock':
+                qs = qs.filter(in_stock=True)
+            if activity_status == 'out_of_stock':
+                qs = qs.filter(in_stock=False)
+        return qs
 
-    def put(self, request, pk=None):
-        try:
-            good = Good.objects.get(pk=pk)
-            serializer = GoodSerializer(good, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Good.DoesNotExist:
-            return Response({"error": "Good not found."}, status=status.HTTP_404_NOT_FOUND)
 
-    def patch(self, request, pk=None):
-        try:
-            good = Good.objects.get(pk=pk)
-            serializer = GoodSerializer(good, data=request.data, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Good.DoesNotExist:
-            return Response({"error": "Good not found."}, status=status.HTTP_404_NOT_FOUND)
-
-    def delete(self, request, pk=None):
-        try:
-            good = Good.objects.get(pk=pk)
-            good.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        except Good.DoesNotExist:
-            return Response({"error": "Good not found."}, status=status.HTTP_404_NOT_FOUND)
+class GoodsRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [GoodsPermission]
+    serializer_class = GoodSerializer
+    queryset = Good.objects.all()
