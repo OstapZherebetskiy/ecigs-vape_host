@@ -1,17 +1,12 @@
 @import '@/styles/global';
 
-
 .header {
-    max-width: $w-max-screen;
+  max-width: $w-max-screen;
   margin: auto;
   height: 100px;
-  max-width: $w-desktop;
   display: flex;
   justify-content: center;
   align-items: center;
-  &_mobile {
-    display: none;
-  }
 }
 .input {
   margin-top: 18px;
@@ -54,6 +49,9 @@
     margin-top: 3px;
   }
 }
+.menu{
+  display: none
+};
 
 @media (max-width: $w-notepad) {
   .input {
@@ -75,46 +73,31 @@
 
 @media (max-width: $w-tablet) {
   .header {
-    display: none;
-    &_mobile {
-      display: flex;
-      height: 100px;
-      max-width: 320px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    max-width: 280px;
+    margin: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .input {
-    &_mobile {
-      margin: auto;
-      margin-top: 18px;
-      background: #ffffff 0% 0% no-repeat padding-box;
-      border: 1px solid #cccccc;
-      border-radius: 10px;
-      width: 100%;
-      min-width: 250px;
-      height: 40px;
-      padding: 4px 17px 4px 10px;
-      box-sizing: border-box;
-      font: normal normal normal 13px/19px Lato;
-      color: $c-black;
-    }
-
-    &_icon_mobile {
-      position: relative;
-      max-width: 18px;
-      width: 100%;
-      left: 240px;
-      top: -28px;
+    min-width: 260px;
+    height: 40px;
+    padding: 6px 14px 4px 7px;
+  
+    &_icon {
+      left: 230px;
     }
   }
-  .menu {
-    &_mobile {
-      margin-left: 10px;
-    }
-    &_icon_mobile {
-      height: 20px;
-    }
+  .account,
+  .cart {
+    display: none;
   }
+  .menu{
+    display: flex;
+    margin-left: 15px;
+    &_icon{
+      height: 22px;
+    }
+  };
 }
