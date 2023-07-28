@@ -1,4 +1,4 @@
-import { Layout } from './components/layout'
+import { Layout } from '@/components/layout'
 import { ItemsGrid } from '@/components/items-grid'
 
 function App() {
