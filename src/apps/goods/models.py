@@ -27,6 +27,23 @@ class Category(models.Model, DirtyFieldsMixin):
         return Category.objects.filter(is_enabled=True)
 
 
+class CharacteristicsType(models.Model):
+    name = models.CharField(max_length=100)
+    comment = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+
+class Characteristics(models.Model):
+    type = models.ForeignKey(CharacteristicsType, on_delete=models.SET_NULL, verbose_name='CharacteristicsType', blank=True, null=True)
+    value = models.CharField(max_length=100)
+    comment = models.CharField(max_length=150)
+
+    def __str__(self):
+        return f'{self.type} = {self.value}'
+
+
 class Good(models.Model, DirtyFieldsMixin):
 
     PHOTO_1 = '1'
@@ -49,6 +66,7 @@ class Good(models.Model, DirtyFieldsMixin):
     description = models.TextField(_(u'Description'), blank=True, null=True)
     in_stock = models.BooleanField(_(u'In stock'), default=True)
     stock_count = models.IntegerField(_('Stock count'), default=0)
+    characteristics = models.ManyToManyField(Characteristics)
 
     photo_1 = models.ImageField(_('Photo 1'), upload_to='goods/photos/%Y/%m/%d', blank=True, null=True)
     photo_2 = models.ImageField(_('Photo 2'), upload_to='goods/photos/%Y/%m/%d', blank=True, null=True)
