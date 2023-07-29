@@ -1,9 +1,13 @@
-import styles from '../menu/Menu.module.scss'
-import closeImg from '../img/close.png'
-import accountImg from '../img/account.png'
-import cartImg from '../img/cart.png'
+import styles from './Menu.module.scss'
+import closeImg from '@/img/close.png'
+import accountImg from '@/img/account.png'
+import cartImg from '@/img/cart.png'
 
-export const Menu = ({closeMenu}) => {
+type Props = {
+  closeMenu: () => void
+}
+
+export const Menu = ({ closeMenu }: Props) => {
    
     return (
       <div className={styles.container}>

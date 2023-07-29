@@ -23,6 +23,7 @@
       "@/components/*": ["./components/*"],
       "@/styles/*": ["./styles/*"],
       "@/api/*": ["./api/*"],
+      "@/img/*": ["./img/*"],
     }
   },
   "include": ["src", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.scss"],
