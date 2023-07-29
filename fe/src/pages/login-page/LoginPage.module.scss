@@ -1,0 +1,17 @@
+@import '@/styles/global';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.box {
+  padding: 16px 32px;
+  background-color: $c-main-white;
+  border: 1px solid $c-main-brown;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 460px;
+}

@@ -1,0 +1,26 @@
+@import '@/styles/global';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pass__box {
+  position: relative;
+
+  .pass_btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    height: 24px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 30%;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-grey-light;
+    }
+  }
+}

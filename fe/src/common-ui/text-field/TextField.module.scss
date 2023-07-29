@@ -2,15 +2,13 @@
 
 .wrapper {
   position: relative;
-  margin-bottom: 8px;
 
   // clear placeholder
   .wrapperInput {
     color: $c-black;
-    border: 1px solid $c-grey-b;
+    border: 1px solid $c-grey;
     border-radius: 4px;
     height: 46px;
-
 
     @media (max-width: $w-tablet) {
       height: 36px;
@@ -53,25 +51,48 @@
       width: 100%;
       font-size: 15px;
       box-sizing: border-box;
+
+      &::placeholder {
+        opacity: 1;
+        transition: all 0.3s;
+      }
+    }
+
+    .input:focus {
+      &::placeholder {
+        opacity: 0;
+      }
     }
 
     .input:not(:placeholder-shown)~.label,
     .input:focus~.label {
-      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      top: -5px;
+      left: 5px;
+      border-top: 1px solid $c-grey;
     }
 
     .label {
-      display: none;
+      opacity: 0;
       position: absolute;
       font-size: 12px;
       padding: 0 3px;
       border-radius: 10px;
-      background-color: #f2f2f2;
-      top: -7px;
-      left: 5px;
+      background-color: #fff;
+      border-top: 1px solid #fff;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+
+      transition: all 0.3s;
 
       &.isFocus {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        top: -5px;
+        left: 5px;
+        border-top: 1px solid $c-grey;
       }
     }
 

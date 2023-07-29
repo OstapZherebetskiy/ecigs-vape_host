@@ -20,7 +20,7 @@ export const TextField = forwardRef<Ref, Props>(
     { required, placeholder, containerClass, value, label, classes, showError, withLabel = true, ...props },
     ref,
   ) => {
-    const updatedPlaceholder = required ? `${placeholder}*` : `${placeholder} (optional)`
+    const updatedPlaceholder = required ? `${placeholder}*` : placeholder
 
     return (
       <div className={cn(styles.wrapper, classes?.wrapper, { [styles.errorWr]: showError }, containerClass)}>
