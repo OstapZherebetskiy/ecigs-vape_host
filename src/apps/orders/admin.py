@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from .models import Order
+from .models import Order, OrderGoods
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('good', 'goods_count', 'status', 'department')
+    list_display = ('status', 'department')
     list_filter = ('status', 'created_at')
-    search_fields = ('good', 'status')
+    search_fields = ('status', )
 
 
 admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderGoods)

@@ -4,10 +4,13 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework.response import Response
 from rest_framework import status
 
-from orders.models import Order
+from orders.models import Order, OrderGoods
 
-from .serializers import OrderSerializer
+from .serializers import OrderSerializer, OrderGoodsSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
+import logging
+log = logging.getLogger(__name__)
 
 
 class OrderListCreateAPIView(ListCreateAPIView):
@@ -28,8 +31,6 @@ class OrderListCreateAPIView(ListCreateAPIView):
 
         if order_id := query_params.get('order_id'):
             qs = qs.filter(id=order_id)
-        if good_id := query_params.get('good_id'):
-            qs = qs.filter(good__id=good_id)
         if user_id := query_params.get('user_id'):
             qs = qs.filter(user_id=user_id)
         if order_status := query_params.get('order_status'):
@@ -37,6 +38,27 @@ class OrderListCreateAPIView(ListCreateAPIView):
         if created_at := query_params.get('created_at_date'):
             qs = qs.filter(created_at__date=created_at)
         return qs
+
+    def create(self, request, *args, **kwargs):
+        goods = request.data.get('goods')
+        resp = super().create(request, *args, **kwargs)
+        instance = Order.objects.get(id=resp.data['id'])
+        if goods:
+            for good in goods:
+                good['order_id'] = resp.data['id']
+            serializer = OrderGoodsSerializer(data=goods, many=True)
+            try:
+                serializer.is_valid(raise_exception=True)
+            except Exception as ex:
+                instance.delete()
+                log.error(ex)
+                return Response(ex.args, status=status.HTTP_400_BAD_REQUEST)
+            serializer.save()
+
+        ordergoods_ids = [el['id'] for el in serializer.data]
+        instance.ordergoods_set.add(*[obj for obj in OrderGoods.objects.filter(id__in=ordergoods_ids)])
+
+        return Response(self.serializer_class(instance).data, status=status.HTTP_200_OK)
 
 
 class OrderRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
@@ -47,7 +69,7 @@ class OrderRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     def patch(self, request, *args, **kwargs):
         user = request.user
         if self.get_object().user == user or user.is_admin:
-            if self.get_object().status != 'new':
+            if self.get_object().status != 'new' and not user.is_admin:
                 return Response("Orders with this status can't be edited", status=status.HTTP_405_METHOD_NOT_ALLOWED)
             return super().patch(request, *args, **kwargs)
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)

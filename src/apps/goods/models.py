@@ -66,7 +66,7 @@ class Good(models.Model, DirtyFieldsMixin):
     description = models.TextField(_(u'Description'), blank=True, null=True)
     in_stock = models.BooleanField(_(u'In stock'), default=True)
     stock_count = models.IntegerField(_('Stock count'), default=0)
-    characteristics = models.ManyToManyField(Characteristics)
+    characteristics = models.ManyToManyField(Characteristics, blank=True)
 
     photo_1 = models.ImageField(_('Photo 1'), upload_to='goods/photos/%Y/%m/%d', blank=True, null=True)
     photo_2 = models.ImageField(_('Photo 2'), upload_to='goods/photos/%Y/%m/%d', blank=True, null=True)
