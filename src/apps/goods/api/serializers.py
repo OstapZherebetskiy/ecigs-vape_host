@@ -3,6 +3,7 @@
 from rest_framework import serializers
 
 from goods.models import Category, Good, Characteristics, CharacteristicsType
+from goods.models import Category, Good, Characteristics, CharacteristicsType
 
 
 import logging

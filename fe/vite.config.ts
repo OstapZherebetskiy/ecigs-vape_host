@@ -12,6 +12,7 @@ export default defineConfig({
       { find: '@/components', replacement: path.resolve(__dirname, 'src/components') },
       { find: '@/styles', replacement: path.resolve(__dirname, 'src/styles') },
       { find: '@/api', replacement: path.resolve(__dirname, 'src/api') },
+      { find: '@/img', replacement: path.resolve(__dirname, 'src/img') },
     ],
   },
 })

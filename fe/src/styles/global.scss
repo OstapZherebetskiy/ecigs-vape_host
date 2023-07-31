@@ -1,2 +1,7 @@
 @import './reset.scss';
 @import './variables.scss';
+
+body {
+  background: $c-grey-b;
+	font-family: 'Poppins', sans-serif;
+}

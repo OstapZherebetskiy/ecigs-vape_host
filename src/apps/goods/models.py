@@ -44,6 +44,23 @@ class Characteristics(models.Model):
         return f'{self.type} = {self.value}'
 
 
+class CharacteristicsType(models.Model):
+    name = models.CharField(max_length=100)
+    comment = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+
+class Characteristics(models.Model):
+    type = models.ForeignKey(CharacteristicsType, on_delete=models.SET_NULL, verbose_name='CharacteristicsType', blank=True, null=True)
+    value = models.CharField(max_length=100)
+    comment = models.CharField(max_length=150)
+
+    def __str__(self):
+        return f'{self.type} = {self.value}'
+
+
 class Good(models.Model, DirtyFieldsMixin):
 
     PHOTO_1 = '1'

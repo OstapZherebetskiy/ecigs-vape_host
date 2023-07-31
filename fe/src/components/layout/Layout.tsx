@@ -1,4 +1,6 @@
 import ErrorBoundary from '@/common-ui/errorBoundary'
+import { Header } from '@/components/header/Header'
+import { Footer } from '@/components/footer/Footer'
 
 import style from './Layout.module.scss'
 
@@ -9,9 +11,9 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <ErrorBoundary>
-      <div>Header</div>
+      <Header/>
       <main className={style.main}>{children}</main>
-      <footer>Footer</footer>
+     <Footer/>
     </ErrorBoundary>
   )
 }
