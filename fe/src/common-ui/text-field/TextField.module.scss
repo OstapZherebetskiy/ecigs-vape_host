@@ -1,19 +1,55 @@
 @import '@/styles/global';
 
+@keyframes showLabel {
+  from {
+    display: block;
+    opacity: 0;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  to {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    top: -5px;
+    left: 5px;
+  }
+}
+
+@keyframes hideLabel {
+  from {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    top: -5px;
+    left: 5px;
+  }
+
+  to {
+    display: block;
+    opacity: 0;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+}
+
 .wrapper {
   position: relative;
+  margin-bottom: 8px;
 
   // clear placeholder
   .wrapperInput {
-    color: $c-black;
-    border: 1px solid $c-grey;
+    color: $c-superBlack;
+    border: 1px solid $c-silver-2;
     border-radius: 4px;
     height: 46px;
 
     @media (max-width: $w-tablet) {
       height: 36px;
     }
-
 
     input:focus::-webkit-input-placeholder {
       color: transparent;
@@ -54,7 +90,7 @@
 
       &::placeholder {
         opacity: 1;
-        transition: all 0.3s;
+        transition: all 0.3s ease-in-out;
       }
     }
 
@@ -66,36 +102,36 @@
 
     .input:not(:placeholder-shown)~.label,
     .input:focus~.label {
+      display: block;
       opacity: 1;
       transform: translateY(0);
       top: -5px;
       left: 5px;
-      border-top: 1px solid $c-grey;
+      font-size: 12px;
+
+      animation: showLabel;
+      animation-duration: 0.3s;
+    }
+
+    .input:placeholder-shown:not(:focus)~.label {
+      animation: hideLabel;
+      animation-duration: 0.3s;
     }
 
     .label {
       opacity: 0;
       position: absolute;
-      font-size: 12px;
       padding: 0 3px;
       border-radius: 10px;
+      border-top: 1px solid $c-silver-2;
       background-color: #fff;
-      border-top: 1px solid #fff;
       top: 50%;
       left: 10px;
       transform: translateY(-50%);
+      display: none;
 
       transition: all 0.3s;
-
-      &.isFocus {
-        opacity: 1;
-        transform: translateY(0);
-        top: -5px;
-        left: 5px;
-        border-top: 1px solid $c-grey;
-      }
     }
-
   }
 
   .error {
