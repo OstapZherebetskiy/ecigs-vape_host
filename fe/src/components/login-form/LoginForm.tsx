@@ -1,55 +1,34 @@
 import { TextField } from '@/common-ui/text-field/TextField'
-import { ChangeEvent, FormEvent, useState } from 'react'
 import { Button } from '@/common-ui/button'
 import cn from 'classnames'
+import { InputType, useLoginForm } from './useLoginForm'
 
 import eye_close from '@/img/eye_close.png'
 import eye_open from '@/img/eye_open.png'
 
 import style from './LoginForm.module.scss'
 
-enum InputType {
-  login = 'Логін',
-  passwordFirst = 'Пароль',
-  passwordSecond = 'Повтор паролю',
-}
-
 export const LoginForm = () => {
-  const [isNewUser, setIsNewUser] = useState(false)
-  const [isShowPass, setIsShowPass] = useState({
-    [InputType.passwordFirst]: false,
-    [InputType.passwordSecond]: false,
-  })
-
-  const [values, setValues] = useState({
-    [InputType.login]: '',
-    [InputType.passwordFirst]: '',
-    [InputType.passwordSecond]: '',
-  })
-
-  const handleShowPass = (name: InputType.passwordFirst | InputType.passwordSecond) => {
-    setIsShowPass({ ...isShowPass, [name]: !isShowPass[name] })
-  }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    console.log(values)
-  }
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target
-
-    setValues({ ...values, [name]: value })
-  }
+  const {
+    handleChange,
+    handleShowPass,
+    handleSubmit,
+    isNewUser,
+    isShowPass,
+    setIsNewUser,
+    values,
+    setValues,
+    errors,
+  } = useLoginForm()
 
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       <TextField
-        type="text"
+        type="email"
         placeholder={InputType.login}
         name={InputType.login}
         onChange={handleChange}
+        showError={errors[InputType.login]}
       />
       <div className={style.pass__box}>
         <TextField
@@ -57,6 +36,7 @@ export const LoginForm = () => {
           placeholder={InputType.passwordFirst}
           onChange={handleChange}
           name={InputType.passwordFirst}
+          showError={errors[InputType.passwordFirst]}
         />
         <img
           className={style.pass_btn}
@@ -77,6 +57,7 @@ export const LoginForm = () => {
             placeholder={InputType.passwordSecond}
             onChange={handleChange}
             name={InputType.passwordSecond}
+            showError={errors[InputType.passwordSecond]}
           />
           <img
             className={style.pass_btn}
@@ -89,8 +70,10 @@ export const LoginForm = () => {
           <input
             type="checkbox"
             name="new_user"
-            checked={isNewUser}
-            onClick={() => setIsNewUser(!isNewUser)}
+            checked={values[InputType.older18]}
+            onChange={() =>
+              setValues({ ...values, [InputType.older18]: !values[InputType.older18] })
+            }
           />
           <span>Мені більше ніж 18 років</span>
         </label>
@@ -101,12 +84,14 @@ export const LoginForm = () => {
           type="checkbox"
           name="new_user"
           checked={isNewUser}
-          onClick={() => setIsNewUser(!isNewUser)}
+          onChange={() => setIsNewUser(!isNewUser)}
         />
         <span>У мене немає акаунта</span>
       </label>
 
-      <Button type="submit">{isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}</Button>
+      <Button type="submit">
+        {isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}
+      </Button>
     </form>
   )
 }

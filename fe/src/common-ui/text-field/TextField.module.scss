@@ -42,8 +42,8 @@
 
   // clear placeholder
   .wrapperInput {
-    color: $c-superBlack;
-    border: 1px solid $c-silver-2;
+    color: $c-black;
+    border: 1px solid $c-grey-b;
     border-radius: 4px;
     height: 46px;
 
@@ -90,7 +90,7 @@
 
       &::placeholder {
         opacity: 1;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s;
       }
     }
 
@@ -123,10 +123,10 @@
       position: absolute;
       padding: 0 3px;
       border-radius: 10px;
-      border-top: 1px solid $c-silver-2;
+      border-top: 1px solid $c-grey-b;
       background-color: #fff;
       top: 50%;
-      left: 10px;
+      left: 6px;
       transform: translateY(-50%);
       display: none;
 
