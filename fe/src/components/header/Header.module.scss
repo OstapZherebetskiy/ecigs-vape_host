@@ -19,7 +19,7 @@
   height: 40px;
   padding: 6px 28px 6px 14px;
   box-sizing: border-box;
-  // TODO: set correct font
+  font-family: 'Rubik', sans-serif;
   font: normal normal normal 13px/19px Lato;
   color: $c-black;
 
@@ -46,7 +46,7 @@
 
   &_text {
     color: $c-black;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 12px;
     font-weight: 600;
     margin-top: 3px;
