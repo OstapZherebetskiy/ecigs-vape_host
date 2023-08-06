@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator
 from django.utils.translation import gettext_lazy as _
 
 from dirtyfields import DirtyFieldsMixin
+from project.ecigs_exceptions import raise_ecigs_exception
 
 import logging
 
@@ -63,4 +64,5 @@ class OrderGoods(models.Model, DirtyFieldsMixin):
             self.good.save()
             super().save(*args, **kwargs)
         else:
-            raise ValueError("You want to buy more goods than we have")
+            raise_ecigs_exception(status_code=400, detail=f"You want to buy more goods than we have. There are only {self.good.stock_count} pieces of {self.good.name} left",
+                                  error_type='Goods count error', extra={"good_id": self.good.id})

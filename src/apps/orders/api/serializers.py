@@ -4,6 +4,7 @@ from rest_framework import serializers
 
 from orders.models import Order, OrderGoods
 from goods.api.serializers import GoodSerializer
+from project.ecigs_exceptions import raise_ecigs_exception
 
 
 import logging
@@ -13,10 +14,12 @@ log = logging.getLogger(__name__)
 class OrderGoodsSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         resp = super().validate(attrs)
-        if attrs['good'].in_stock and attrs['good'].stock_count >= attrs['count']:
+        good = attrs['good']
+        if good.in_stock and good.stock_count >= attrs['count']:
             return resp
         else:
-            raise ValueError("You want to buy more goods than we have")
+            raise_ecigs_exception(status_code=400, detail=f"You want to buy more goods than we have. There are only {good.stock_count} pieces of {good.name} left",
+                                  error_type='Goods count error', extra={"good_id": good.id})
 
     class Meta:
         model = OrderGoods
@@ -30,4 +33,3 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
-

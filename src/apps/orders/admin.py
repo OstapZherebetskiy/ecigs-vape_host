@@ -5,7 +5,7 @@ from .models import Order, OrderGoods
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('status', 'department')
+    list_display = ('status', 'department', "order_phone")
     list_filter = ('status', 'created_at')
     search_fields = ('status', )
 
