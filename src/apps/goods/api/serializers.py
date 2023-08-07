@@ -3,6 +3,7 @@
 from rest_framework import serializers
 
 from goods.models import Category, Good, Characteristics, CharacteristicsType
+from goods.models import Category, Good, Characteristics, CharacteristicsType
 
 
 import logging
@@ -28,16 +29,19 @@ class CharacteristicsTypeSerializer(serializers.ModelSerializer):
 
 
 class CharacteristicsSerializer(serializers.ModelSerializer):
-    type_info = CharacteristicsTypeSerializer(source='type')
+    type_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Characteristics
         fields = '__all__'
 
+    def get_type_name(self, obj):
+        return obj.type.name
+
 
 class GoodSerializer(serializers.ModelSerializer):
-    category_info = CategorySerializer(source='category')
-    characteristics_info = CharacteristicsSerializer(many=True, source='characteristics')
+    category = CategorySerializer()
+    characteristics = CharacteristicsSerializer(many=True)
 
     class Meta:
         model = Good
