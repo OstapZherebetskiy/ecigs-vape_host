@@ -5,17 +5,61 @@
   margin: auto;
   height: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  &_schedule {
+    font-weight: bolder;
+    & > ul {
+      margin-top: 10px;
+      font-weight: 500;
+      & > li {
+        margin-top: 5px;
+      }
+    }
+  }
+  &_delivery > ul > li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+  }
+  &_post_icon {
+    height: 20px;
+  }
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  & a {
+    text-decoration: none;
+    color: black;
+    margin-top: 15px;
+  }
 
+  @media (max-width: $w-notepad) {
+    align-items: center;
+    margin-top: 15px;
+  }
+}
+.name_shop {
+  color: $c-red;
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+}
 .input {
   margin-top: 18px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #cccccc;
   border-radius: 10px;
   width: 100%;
-  min-width: 500px;
+  min-width: 400px;
   height: 40px;
   padding: 6px 28px 6px 14px;
   box-sizing: border-box;
@@ -27,7 +71,7 @@
     position: relative;
     max-width: 20px;
     width: 100%;
-    left: 490px;
+    left: 390px;
     top: -29px;
   }
 }
@@ -38,7 +82,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 40px;
 
   &_icon {
     height: 23px;
@@ -54,7 +97,7 @@
 }
 
 .menu {
-  display: none
+  display: none;
 }
 
 @media (max-width: $w-notepad) {
