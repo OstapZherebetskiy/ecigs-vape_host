@@ -38,15 +38,18 @@
 
   &__inputs {
     max-height: 0;
-    padding-top: 5px;
     height: 100%;
     overflow: hidden;
     opacity: 0;
     transition: all 0.3s ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     &.active {
-      max-height: 100px;
+      max-height: 300px;
       opacity: 1;
+      padding-top: 5px;
     }
   }
 }

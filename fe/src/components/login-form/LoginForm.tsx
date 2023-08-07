@@ -1,7 +1,8 @@
 import { TextField } from '@/common-ui/text-field/TextField'
 import { Button } from '@/common-ui/button'
 import cn from 'classnames'
-import { InputType, useLoginForm } from './useLoginForm'
+import { useLoginForm } from './useLoginForm'
+import { InputType } from './utils';
 
 import eye_close from '@/img/eye_close.png'
 import eye_open from '@/img/eye_open.png'
@@ -15,7 +16,7 @@ export const LoginForm = () => {
     handleSubmit,
     isNewUser,
     isShowPass,
-    setIsNewUser,
+    handlerNewUser,
     values,
     setValues,
     errors,
@@ -29,6 +30,7 @@ export const LoginForm = () => {
         name={InputType.login}
         onChange={handleChange}
         showError={errors[InputType.login]}
+        required={isNewUser}
       />
       <div className={style.pass__box}>
         <TextField
@@ -37,6 +39,7 @@ export const LoginForm = () => {
           onChange={handleChange}
           name={InputType.passwordFirst}
           showError={errors[InputType.passwordFirst]}
+          required={isNewUser}
         />
         <img
           className={style.pass_btn}
@@ -58,6 +61,7 @@ export const LoginForm = () => {
             onChange={handleChange}
             name={InputType.passwordSecond}
             showError={errors[InputType.passwordSecond]}
+            required={isNewUser}
           />
           <img
             className={style.pass_btn}
@@ -66,6 +70,31 @@ export const LoginForm = () => {
             alt={isShowPass[InputType.passwordSecond] ? 'show' : 'hide'}
           />
         </div>
+
+        <TextField
+          placeholder={InputType.firstName}
+          name={InputType.firstName}
+          onChange={handleChange}
+          showError={errors[InputType.firstName]}
+          required
+        />
+
+        <TextField
+          placeholder={InputType.lastName}
+          name={InputType.lastName}
+          onChange={handleChange}
+          showError={errors[InputType.lastName]}
+          required
+        />
+
+        <TextField
+          placeholder={InputType.phone}
+          name={InputType.phone}
+          onChange={handleChange}
+          showError={errors[InputType.phone]}
+          required
+        />
+
         <label className={style.newUser}>
           <input
             type="checkbox"
@@ -74,8 +103,9 @@ export const LoginForm = () => {
             onChange={() =>
               setValues({ ...values, [InputType.older18]: !values[InputType.older18] })
             }
+            required
           />
-          <span>Мені більше ніж 18 років</span>
+          <span>Мені більше ніж 18 років *</span>
         </label>
       </div>
 
@@ -84,14 +114,12 @@ export const LoginForm = () => {
           type="checkbox"
           name="new_user"
           checked={isNewUser}
-          onChange={() => setIsNewUser(!isNewUser)}
+          onChange={handlerNewUser}
         />
         <span>У мене немає акаунта</span>
       </label>
 
-      <Button type="submit">
-        {isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}
-      </Button>
+      <Button type="submit">{isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}</Button>
     </form>
   )
 }

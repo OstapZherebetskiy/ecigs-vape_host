@@ -25,6 +25,7 @@
     transform: translateY(0);
     top: -5px;
     left: 5px;
+    font-size: 12px;
   }
 
   to {
@@ -89,14 +90,16 @@
       box-sizing: border-box;
 
       &::placeholder {
+        font-family: 'Rubik', sans-serif;
         opacity: 1;
-        transition: all 0.3s;
+        transition: all 0.3s ease-in-out;
       }
     }
 
     .input:focus {
       &::placeholder {
         opacity: 0;
+        transition: all 0.4s ease-in-out;
       }
     }
 
@@ -116,6 +119,7 @@
     .input:placeholder-shown:not(:focus)~.label {
       animation: hideLabel;
       animation-duration: 0.3s;
+      animation-timing-function: ease-out;
     }
 
     .label {
@@ -126,7 +130,7 @@
       border-top: 1px solid $c-grey-b;
       background-color: #fff;
       top: 50%;
-      left: 6px;
+      left: 2px;
       transform: translateY(-50%);
       display: none;
 
