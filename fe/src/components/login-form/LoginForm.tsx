@@ -2,7 +2,7 @@ import { TextField } from '@/common-ui/text-field/TextField'
 import { Button } from '@/common-ui/button'
 import cn from 'classnames'
 import { useLoginForm } from './useLoginForm'
-import { InputType } from './utils';
+import { InputType } from './utils'
 
 import eye_close from '@/img/eye_close.png'
 import eye_open from '@/img/eye_open.png'
@@ -29,7 +29,8 @@ export const LoginForm = () => {
         placeholder={InputType.login}
         name={InputType.login}
         onChange={handleChange}
-        showError={errors[InputType.login]}
+        showError={errors[InputType.login].isInvalid}
+        errorMessage={errors[InputType.login].message}
         required={isNewUser}
       />
       <div className={style.pass__box}>
@@ -38,7 +39,8 @@ export const LoginForm = () => {
           placeholder={InputType.passwordFirst}
           onChange={handleChange}
           name={InputType.passwordFirst}
-          showError={errors[InputType.passwordFirst]}
+          showError={errors[InputType.passwordFirst].isInvalid}
+          errorMessage={errors[InputType.passwordFirst].message}
           required={isNewUser}
         />
         <img
@@ -60,7 +62,8 @@ export const LoginForm = () => {
             placeholder={InputType.passwordSecond}
             onChange={handleChange}
             name={InputType.passwordSecond}
-            showError={errors[InputType.passwordSecond]}
+            showError={errors[InputType.passwordSecond].isInvalid}
+            errorMessage={errors[InputType.passwordSecond].message}
             required={isNewUser}
           />
           <img
@@ -75,24 +78,27 @@ export const LoginForm = () => {
           placeholder={InputType.firstName}
           name={InputType.firstName}
           onChange={handleChange}
-          showError={errors[InputType.firstName]}
-          required
+          showError={errors[InputType.firstName].isInvalid}
+          errorMessage={errors[InputType.firstName].message}
+          required={isNewUser}
         />
 
         <TextField
           placeholder={InputType.lastName}
           name={InputType.lastName}
           onChange={handleChange}
-          showError={errors[InputType.lastName]}
-          required
+          showError={errors[InputType.lastName].isInvalid}
+          errorMessage={errors[InputType.lastName].message}
+          required={isNewUser}
         />
 
         <TextField
           placeholder={InputType.phone}
           name={InputType.phone}
           onChange={handleChange}
-          showError={errors[InputType.phone]}
-          required
+          showError={errors[InputType.phone].isInvalid}
+          errorMessage={errors[InputType.phone].message}
+          required={isNewUser}
         />
 
         <label className={style.newUser}>
@@ -103,8 +109,9 @@ export const LoginForm = () => {
             onChange={() =>
               setValues({ ...values, [InputType.older18]: !values[InputType.older18] })
             }
-            required
+            required={isNewUser}
           />
+          {/* Todo: add error container */}
           <span>Мені більше ніж 18 років *</span>
         </label>
       </div>
@@ -119,7 +126,9 @@ export const LoginForm = () => {
         <span>У мене немає акаунта</span>
       </label>
 
-      <Button type="submit">{isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}</Button>
+      <Button type="submit" onClick={handleSubmit}>
+        {isNewUser ? 'Зареєструвати аккаунт' : 'Увійти'}
+      </Button>
     </form>
   )
 }

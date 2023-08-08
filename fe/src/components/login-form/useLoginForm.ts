@@ -1,6 +1,6 @@
 import { validateLoginForm } from '@/common/validate'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { InputType, defErrorValues, defValues } from './utils'
+import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
 
 export const useLoginForm = () => {
   const [isNewUser, setIsNewUser] = useState(false)
@@ -16,14 +16,51 @@ export const useLoginForm = () => {
     setIsShowPass({ ...isShowPass, [name]: !isShowPass[name] })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     e.preventDefault()
 
     if (isNewUser) {
-      setErrors(validateLoginForm(values))
+      const validForm = validateLoginForm(values)
+      console.log(validForm)
+      setErrors(validForm.errors)
+
+      if (validForm.isValid && values[InputType.older18]) {
+        console.log('register')
+      }
+
+      return
     }
 
-    console.log(errors)
+    const loginDataValid = { ...errors }
+    let isValid = true
+
+    if (!values[InputType.login]) {
+      loginDataValid[InputType.login] = {
+        isInvalid: true,
+        message: 'Небхідно вказати електронну пошту',
+      }
+      isValid = false
+    } else {
+      loginDataValid[InputType.login] = defErrorBody
+      isValid = true
+    }
+
+    if (!values[InputType.passwordFirst] && isValid) {
+      loginDataValid[InputType.passwordFirst] = {
+        isInvalid: true,
+        message: 'Небхідно вказати пароль',
+      }
+      isValid = false
+    } else {
+      loginDataValid[InputType.passwordFirst] = defErrorBody
+      isValid = true
+    }
+
+    setErrors(loginDataValid)
+
+    if (isValid) {
+      console.log('login')
+    }
   }
 
   const handlerNewUser = () => {

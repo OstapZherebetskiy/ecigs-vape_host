@@ -1,46 +1,122 @@
-import { InputType, LoginValues } from '@/components/login-form/utils'
+import {
+  ErrorBody,
+  InputType,
+  LoginValues,
+  defErrorBody,
+} from '@/components/login-form/utils'
 
 export const validateLoginForm = (values: LoginValues) => {
   const copyVal = { ...values }
 
-  const errors = {} as Record<InputType, boolean>
+  const errors = {} as Record<InputType, ErrorBody>
+  let isValid = true
 
-  Object.entries(copyVal).every(([k, v]) => {
+  Object.entries(copyVal).forEach(([k, v]) => {
     const key = k as InputType
     const value = v as string
 
     switch (key) {
       case InputType.login:
-        if (value.length < 8) {
-          errors[key] = true
+        if (value.trim().length <= 8) {
+          errors[key] = { isInvalid: true, message: 'Мінімум 8 символів' }
+          isValid = false
+          break
         }
+        if (value.match(/ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)) {
+          errors[key] = { isInvalid: true, message: 'Введіть коректну пошту' }
+          isValid = false
+          break
+        }
+
+        isValid = true
+        errors[key] = defErrorBody
         break
+
       case InputType.passwordFirst:
-        errors[key] =
-          value.length >= 8 && value.length <= 16 && !!value.match(/[0-9a-z]/gi)
+        if (value.length <= 8 || value.length >= 16) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Пароль повинен містити від 8 до 16 символів',
+          }
+          isValid = false
+          break
+        }
+        if (!value.match(/[0-9a-zа-я]/i)) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Пароль повинен містити букви та цифри',
+          }
+          isValid = false
+          break
+        }
 
-        // todo пароль мін 8 макс 16 буква і цифра
-
+        isValid = true
+        errors[key] = defErrorBody
         break
+
       case InputType.passwordSecond:
+        if (value.length <= 8 || value.length >= 16) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Пароль повинен містити від 8 до 16 символів',
+          }
+          isValid = false
+          break
+        }
+        if (!value.match(/[0-9a-zа-я]/i)) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Пароль повинен містити букви та цифри',
+          }
+          isValid = false
+          break
+        }
+        if (copyVal[InputType.passwordFirst] !== copyVal[InputType.passwordSecond]) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Паролі повинні співпадати',
+          }
+          isValid = false
+          break
+        }
+
+        isValid = true
+        errors[key] = defErrorBody
         break
+
       case InputType.firstName:
-        break
       case InputType.lastName:
+        if (value.trim().length < 3) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Мінімум 3 букви',
+          }
+          isValid = false
+          break
+        }
+
+        isValid = true
+        errors[key] = defErrorBody
         break
+
       case InputType.phone:
+        if (
+          value.replaceAll(' ', '').length === 11 ||
+          !value.replaceAll(' ', '').match(/^\+380\d{9}$/i)
+        ) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Введіть коректний номер +380...',
+          }
+          isValid = false
+          break
+        }
+
+        isValid = true
+        errors[key] = defErrorBody
         break
     }
   })
 
-  return {
-    [InputType.login]: false,
-    [InputType.passwordFirst]: false,
-    [InputType.passwordSecond]: false,
-    [InputType.older18]: false,
-
-    [InputType.firstName]: false,
-    [InputType.lastName]: false,
-    [InputType.phone]: false,
-  }
+  return { errors, isValid }
 }

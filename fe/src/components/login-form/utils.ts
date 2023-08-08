@@ -8,15 +8,20 @@ export enum InputType {
   phone = 'Номер телефону',
 }
 
-export const defErrorValues = {
-  [InputType.login]: false,
-  [InputType.passwordFirst]: false,
-  [InputType.passwordSecond]: false,
-  [InputType.older18]: false,
+export const defErrorBody: ErrorBody = {
+  isInvalid: false,
+  message: '',
+}
 
-  [InputType.firstName]: false,
-  [InputType.lastName]: false,
-  [InputType.phone]: false,
+export const defErrorValues: Record<InputType, ErrorBody> = {
+  [InputType.login]: defErrorBody,
+  [InputType.passwordFirst]: defErrorBody,
+  [InputType.passwordSecond]: defErrorBody,
+  [InputType.older18]: defErrorBody,
+
+  [InputType.firstName]: defErrorBody,
+  [InputType.lastName]: defErrorBody,
+  [InputType.phone]: defErrorBody,
 }
 
 export const defValues: LoginValues = {
@@ -39,4 +44,9 @@ export type LoginValues = {
   [InputType.firstName]: string
   [InputType.lastName]: string
   [InputType.phone]: string
+}
+
+export type ErrorBody = {
+  isInvalid: boolean
+  message: string
 }
