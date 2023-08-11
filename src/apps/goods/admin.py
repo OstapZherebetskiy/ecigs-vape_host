@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class GoodsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'in_stock')
+    list_display = ('name', 'price', 'in_stock', 'stock_count')
     list_filter = ('in_stock',)
     search_fields = ('name', 'category')
 
