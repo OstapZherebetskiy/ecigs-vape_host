@@ -29,8 +29,8 @@ class UserSerializer(serializers.ModelSerializer):
 
         if 'phone' in data:
             log.debug(f"Validate phone: {data['phone']}")
-            if re.match(r"^\+?1?\d{8,15}$", data['phone'].replace(' ', '')) is None:
-                log.debug(re.match(r"^\+?1?\d{8,15}$", data['phone'].replace(' ', '')))
+            if re.match(r"^\+380\d{9}$", data['phone'].replace(' ', '')) is None:
+                log.debug(re.match(r"^\+380\d{9}$", data['phone'].replace(' ', '')))
                 raise serializers.ValidationError({'phone': _(u'Incorrect phone number')})
 
             data['phone'] = re.sub('[^0-9]', '', data['phone'])
