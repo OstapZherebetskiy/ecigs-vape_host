@@ -101,7 +101,12 @@ export const LoginForm = () => {
           required={isNewUser}
         />
 
-        <label className={style.newUser}>
+        <label
+          className={cn(style.newUser, {
+            // [style.isInvalid]: true,
+            [style.isInvalid]: errors[InputType.older18].isInvalid,
+          })}
+        >
           <input
             type="checkbox"
             name="new_user"
@@ -111,7 +116,6 @@ export const LoginForm = () => {
             }
             required={isNewUser}
           />
-          {/* Todo: add error container */}
           <span>Мені більше ніж 18 років *</span>
         </label>
       </div>

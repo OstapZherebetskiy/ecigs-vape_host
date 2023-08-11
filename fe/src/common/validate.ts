@@ -33,7 +33,7 @@ export const validateLoginForm = (values: LoginValues) => {
         break
 
       case InputType.passwordFirst:
-        if (value.length <= 8 || value.length >= 16) {
+        if (value.length < 8 || value.length > 16) {
           errors[key] = {
             isInvalid: true,
             message: 'Пароль повинен містити від 8 до 16 символів',
@@ -41,7 +41,7 @@ export const validateLoginForm = (values: LoginValues) => {
           isValid = false
           break
         }
-        if (!value.match(/[0-9a-zа-я]/i)) {
+        if (!value.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/i)) {
           errors[key] = {
             isInvalid: true,
             message: 'Пароль повинен містити букви та цифри',
@@ -63,7 +63,7 @@ export const validateLoginForm = (values: LoginValues) => {
           isValid = false
           break
         }
-        if (!value.match(/[0-9a-zа-я]/i)) {
+        if (!value.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/i)) {
           errors[key] = {
             isInvalid: true,
             message: 'Пароль повинен містити букви та цифри',
@@ -75,6 +75,20 @@ export const validateLoginForm = (values: LoginValues) => {
           errors[key] = {
             isInvalid: true,
             message: 'Паролі повинні співпадати',
+          }
+          isValid = false
+          break
+        }
+
+        isValid = true
+        errors[key] = defErrorBody
+        break
+
+      case InputType.older18:
+        if (!value) {
+          errors[key] = {
+            isInvalid: true,
+            message: 'Обовʼязкове поле',
           }
           isValid = false
           break
