@@ -16,4 +16,14 @@ export default defineConfig({
       { find: '@/pages', replacement: path.resolve(__dirname, 'src/pages') },
     ],
   },
+  server: {
+    proxy: {
+      // NOTE: rewrite http://localhost:5173/api -> https://www.adorama.com/api
+      '^/account/.*': {
+        target: 'http://127.0.0.1:8000/account',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/account/, ''),
+      },
+    },
+  },
 })

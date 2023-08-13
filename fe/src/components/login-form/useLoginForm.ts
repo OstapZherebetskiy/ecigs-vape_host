@@ -1,6 +1,7 @@
 import { validateLoginForm } from '@/common/validate'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
+import { accountsApi } from '@/api/accounts'
 
 export const useLoginForm = () => {
   const [isNewUser, setIsNewUser] = useState(false)
@@ -16,7 +17,7 @@ export const useLoginForm = () => {
     setIsShowPass({ ...isShowPass, [name]: !isShowPass[name] })
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     e.preventDefault()
 
     if (isNewUser) {
@@ -26,6 +27,11 @@ export const useLoginForm = () => {
 
       if (validForm.isValid && values[InputType.older18]) {
         console.log('register')
+
+        const data = await accountsApi.registerNewUser(values)
+
+        console.log('data')
+        console.log(data)
       }
 
       return
