@@ -41,9 +41,19 @@ class CharacteristicsSerializer(serializers.ModelSerializer):
 
 class GoodSerializer(serializers.ModelSerializer):
 
+    main_photo = serializers.SerializerMethodField()
+
     class Meta:
         model = Good
-        fields = '__all__'
+        fields = ['id', 'name', 'price', 'description', 'in_stock', 'main_photo']
+
+    def get_main_photo(self, obj):
+        photo_number = obj.main_photo
+        photo_attr = f'photo_{photo_number}'
+        photo = getattr(obj, photo_attr, None)
+        if photo and hasattr(photo, 'url'):
+            return photo.url
+        return None
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)

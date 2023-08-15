@@ -95,6 +95,7 @@ class Good(models.Model, DirtyFieldsMixin):
     class Meta:
         verbose_name = _(u'Good')
         verbose_name_plural = _(u'Goods')
+        ordering = ['-in_stock',]
 
     def __str__(self):
         return self.name
