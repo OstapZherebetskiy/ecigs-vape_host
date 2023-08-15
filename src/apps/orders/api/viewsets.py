@@ -3,13 +3,17 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import AllowAny
+
+from project.permissions_classes.permissions_clases import AdminPermission
+from project.ecigs_exceptions import handle_ecigs_exceptions
 
 from orders.models import Order, OrderGoods, Good
-from project.permissions_classes.permissions_clases import AdminPermission
 
 from .serializers import OrderSerializer, OrderGoodsSerializer
-from rest_framework.permissions import AllowAny
-from project.ecigs_exceptions import handle_ecigs_exceptions
+
+from orders.tasks import task_new_order_sendmail
+
 
 import logging
 log = logging.getLogger(__name__)
@@ -58,6 +62,8 @@ class OrderListCreateAPIView(ListCreateAPIView):
 
         ordergoods_ids = [el['id'] for el in serializer.data]
         instance.ordergoods_set.add(*[obj for obj in OrderGoods.objects.filter(id__in=ordergoods_ids)])
+
+        task_new_order_sendmail(instance)
 
         return Response(self.serializer_class(instance).data, status=status.HTTP_200_OK)
 
