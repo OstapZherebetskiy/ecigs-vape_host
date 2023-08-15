@@ -12,7 +12,7 @@ const registerNewUser = async (data: LoginValues): Promise<User[]> => {
   }
 
   // return await fetchJson('/account', {
-  return await fetchJson('http://localhost:8000/account/', {
+  return await fetchJson('/api/account/', {
     method: 'POST',
     body: JSON.stringify(body),
   })

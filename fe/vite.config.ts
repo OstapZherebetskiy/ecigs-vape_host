@@ -18,11 +18,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      // NOTE: rewrite http://localhost:5173/api -> https://www.adorama.com/api
-      '^/account/.*': {
-        target: 'http://127.0.0.1:8000/account',
+      // NOTE: rewrite http://localhost:5173/api -> http://localhost:8000/api
+      '^/api/.*': {
+        target: 'http://127.0.0.1:8000/api',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/account/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },
