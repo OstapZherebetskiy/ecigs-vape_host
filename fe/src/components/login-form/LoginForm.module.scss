@@ -1,0 +1,60 @@
+@import '@/styles/global';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pass__box {
+  position: relative;
+
+  .pass_btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    height: 24px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 30%;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-grey-light;
+    }
+  }
+}
+
+.newUser {
+  display: flex;
+  gap: 6px;
+  font-weight: normal;
+  font-size: 12px;
+  align-items: center;
+
+  span {
+    cursor: pointer;
+  }
+
+  &__inputs {
+    max-height: 0;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &.active {
+      max-height: 300px;
+      opacity: 1;
+      padding-top: 5px;
+    }
+  }
+
+  &.isInvalid {
+    box-sizing: border-box;
+    border: 1px solid red;
+  }
+}
