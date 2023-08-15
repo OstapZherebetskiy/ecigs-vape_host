@@ -100,10 +100,10 @@ export const validateLoginForm = (values: LoginValues) => {
 
       case InputType.firstName:
       case InputType.lastName:
-        if (value.trim().length < 3) {
+        if (value.trim().length < 2) {
           errors[key] = {
             isInvalid: true,
-            message: 'Мінімум 3 букви',
+            message: 'Мінімум 2 букви',
           }
           isValid = false
           break
