@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Menu } from '@/components/menu/Menu'
 import { Dropdown } from '@/components/dropdown/Dropdown'
 import { EMAIL, PHONE_NUM, TELEGRAM } from '@/common/constants'
+import { Link } from 'react-router-dom';
 
 import searchImg from '@/img/search.png'
 import accountImg from '@/img/account.png'
@@ -13,6 +14,7 @@ import LocationIMG from '@/img/location.png'
 import phoneIMG from '@/img/phone.png'
 
 import styles from './Header.module.scss'
+import { routes } from '@/common/routes';
 
 export const Header = () => {
   const [isHamburger, setIsHamburger] = useState(false)
@@ -82,11 +84,11 @@ export const Header = () => {
           <input className={styles.input} type="text" placeholder="Я шукаю ..." />
           <img src={searchImg} className={styles.input_icon} alt="search" />
         </form>
-        <div className={styles.account} onClick={toggleDropdown}>
+        <Link to={routes.login} className={styles.account} onClick={toggleDropdown}>
           <img className={styles.account_icon} src={accountImg} alt="account" />
           <div className={styles.account_text}>Привіт, Ім'я</div>
           {isDropdown && <Dropdown/>}
-        </div>
+        </Link>
         <div className={styles.menu}>
           <img className={styles.menu_icon} src={menuIMG} alt="menu" onClick={handlerClick} />
         </div>

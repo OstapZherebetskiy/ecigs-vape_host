@@ -29,7 +29,7 @@ export const ItemsGrid = () => {
   return (
     <ul className={style.container}>
       {productList.map((product) => (
-        <li className={style.card}>
+        <li key={product.id} className={style.card}>
           <div className={style.box}>
             <h3 className={style.title}>{product.name}</h3>
             <div className={style.img__box}>
@@ -42,7 +42,7 @@ export const ItemsGrid = () => {
             <span className={style.absent}>Товар відсутній</span>
           )}
           <p className={style.desc}>{getFormatedDesc(product.description)}</p>
-          <span className={style.price}>2000 грн</span>
+          <span className={style.price}>{product.price} грн</span>
           <Button className={style.btn}>Купити</Button>
         </li>
       ))}

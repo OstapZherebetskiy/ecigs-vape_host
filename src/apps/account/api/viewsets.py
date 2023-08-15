@@ -38,7 +38,7 @@ class UserAPI(generics.RetrieveUpdateDestroyAPIView, generics.CreateAPIView):
         serializer.save()
 
         if 'email' in serializer.validated_data:
-            task_send_email_verification_code(self.request.user.id)
+            task_send_email_verification_code(serializer.instance.id)
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

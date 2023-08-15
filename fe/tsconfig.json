@@ -24,6 +24,7 @@
       "@/styles/*": ["./styles/*"],
       "@/api/*": ["./api/*"],
       "@/img/*": ["./img/*"],
+      "@/pages/*": ["./pages/*"]
     }
   },
   "include": ["src", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.scss"],
