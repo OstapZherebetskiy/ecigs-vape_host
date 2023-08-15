@@ -1,17 +1,17 @@
 export type Product = {
   id: number
-  category: Category
-  characteristics: Characteristic[]
+  // category: Category
+  // characteristics: Characteristic[]
   name: string
   price: string
   description: string
   in_stock: boolean
-  stock_count: number
-  photo_1: string
-  photo_2: string
-  photo_3: string
-  photo_4: string
-  photo_5: string
+  // stock_count: number
+  // photo_1: string
+  // photo_2: string
+  // photo_3: string
+  // photo_4: string
+  // photo_5: string
   main_photo: string
 }
 
