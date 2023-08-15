@@ -5,7 +5,7 @@
   margin: auto;
   height: 100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .info {
@@ -37,21 +37,23 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  gap: 10px;
   & a {
     text-decoration: none;
     color: black;
-    margin-top: 15px;
-  }
-
-  @media (max-width: $w-notepad) {
-    align-items: center;
-    margin-top: 15px;
   }
 }
-.name_shop {
+.logo {
   color: $c-red;
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
+}
+.phone {
+  display: flex;
+  align-items: center;
+  &_icon {
+    height: 20px;
+  }
 }
 .input {
   margin-top: 18px;
@@ -76,13 +78,12 @@
   }
 }
 
-.account,
-.cart {
+.account {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  position: relative;
   &_icon {
     height: 23px;
   }
@@ -99,7 +100,106 @@
 .menu {
   display: none;
 }
+@media (max-width: $w-max-screen) {
+  .header {
+    max-width: $w-max-screen;
+    margin: auto;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    &_schedule {
+      font-weight: bolder;
+      & > ul {
+        margin-top: 10px;
+        font-weight: 500;
+        & > li {
+          margin-top: 5px;
+        }
+      }
+    }
+    &_delivery > ul > li {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    &_post_icon {
+      height: 20px;
+    }
+  }
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    & a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .logo {
+    color: red ;
+  }
+  .phone {
+    display: flex;
+    align-items: center;
+    &_icon {
+      height: 20px;
+    }
+  }
+  .input {
+    margin-top: 18px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 400px;
+    height: 40px;
+    padding: 6px 28px 6px 14px;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    font: normal normal normal 13px/19px Lato;
+    color: $c-black;
 
+    &_icon {
+      position: relative;
+      max-width: 20px;
+      width: 100%;
+      right: 390px;
+      top: -29px;
+    }
+  }
+
+  .account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &_icon {
+      height: 23px;
+    }
+
+    &_text {
+      color: $c-black;
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+  }
+
+  .menu {
+    display: none;
+  }
+}
 @media (max-width: $w-notepad) {
   .input {
     min-width: 400px;
@@ -109,8 +209,7 @@
     }
   }
 
-  .account,
-  .cart {
+  .account {
     &_icon {
       height: 21px;
     }
@@ -141,8 +240,7 @@
     }
   }
 
-  .account,
-  .cart {
+  .account {
     display: none;
   }
 
