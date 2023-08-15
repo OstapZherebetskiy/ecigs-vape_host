@@ -40,8 +40,6 @@ class CharacteristicsSerializer(serializers.ModelSerializer):
 
 
 class GoodSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
-    characteristics = CharacteristicsSerializer(many=True)
 
     class Meta:
         model = Good
@@ -50,8 +48,3 @@ class GoodSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         return ret
-
-    def get_category_name(self, obj):
-        if obj.category:
-            return obj.category.name
-        return None
