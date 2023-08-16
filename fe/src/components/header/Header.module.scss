@@ -96,28 +96,43 @@
   }
 }
 
-.menu {
+.hamburger {
   display: none;
 }
 @media (max-width: $w-max-screen) {
   .header {
-    max-width: $w-max-screen;
-    margin: auto;
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    max-width: $w-desktop;
   }
   .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
     &_schedule {
-      font-weight: bolder;
       & > ul {
-        margin-top: 10px;
-        font-weight: 500;
+        font-weight: 400;
+      }
+    }
+  }
+  .logo {
+    color: red;
+    height: 30px;
+  }
+  .input {
+    min-width: 300px;
+    &_icon {
+      left: 290px;
+    }
+  }
+}
+@media (max-width: $w-notepad) {
+  .header {
+    max-width: $w-tablet;
+  }
+  .info {
+    font-size: 10px;
+    gap: 15px;
+    &_schedule {
+      font-weight: bold;
+      & > ul {
+        margin-top: 7px;
+        font-weight: 300;
         & > li {
           margin-top: 5px;
         }
@@ -128,127 +143,92 @@
       align-items: center;
       gap: 5px;
       margin-top: 5px;
+      font-size: 10px;
     }
     &_post_icon {
-      height: 20px;
+      height: 15px;
     }
   }
   .contacts {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 10px;
-    & a {
-      text-decoration: none;
-      color: black;
-    }
+    gap: 7px;
+    font-size: 10px;
   }
   .logo {
-    color: red ;
+    font-size: 20px;
   }
   .phone {
-    display: flex;
-    align-items: center;
     &_icon {
-      height: 20px;
+      height: 15px;
     }
   }
   .input {
-    margin-top: 18px;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border: 1px solid #cccccc;
-    border-radius: 10px;
-    width: 100%;
-    min-width: 400px;
-    height: 40px;
-    padding: 6px 28px 6px 14px;
-    box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
-    font: normal normal normal 13px/19px Lato;
-    color: $c-black;
-
+    min-width: 200px;
     &_icon {
-      position: relative;
-      max-width: 20px;
-      width: 100%;
-      right: 390px;
+      left: 185px;
       top: -29px;
     }
   }
 
   .account {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     &_icon {
-      height: 23px;
-    }
-
-    &_text {
-      color: $c-black;
-      font-family: 'Rubik', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 3px;
-    }
-  }
-
-  .menu {
-    display: none;
-  }
-}
-@media (max-width: $w-notepad) {
-  .input {
-    min-width: 400px;
-
-    &_icon {
-      left: 390px;
-    }
-  }
-
-  .account {
-    &_icon {
-      height: 21px;
+      height: 20px;
     }
 
     &_text {
       font-size: 10px;
+      font-weight: 400;
     }
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 
 @media (max-width: $w-tablet) {
   .header {
     max-width: 280px;
-    margin: auto;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 80px;
+    gap: 5px;
+  }
+  .info {
+    display: none;
   }
 
+  .contacts {
+    display: none;
+  }
+  .logo {
+    color: $c-red;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+  }
+  .phone {
+    display: none;
+  }
   .input {
-    min-width: 260px;
-    height: 40px;
-    padding: 6px 14px 4px 7px;
+    min-width:130px;
+    height: 30px;
+    padding: 3px 7px 3px 7px;
 
     &_icon {
-      left: 230px;
+      max-width: 17px;
+      left: 150px;
+      top: -23px;
     }
   }
 
   .account {
-    display: none;
+    &_icon {
+      height: 20px;
+    }
+
+    &_text {
+  display: none;
+    }
   }
 
-  .menu {
-    display: flex;
-    margin-left: 15px;
-
-    &_icon {
-      height: 22px;
-    }
+  .hamburger {
+    display: none;
   }
 }

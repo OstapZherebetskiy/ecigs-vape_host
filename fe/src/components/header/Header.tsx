@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Menu } from '@/components/menu/Menu'
+import { Hamburger } from '@/components/hamburger/Hamburger'
 import { Dropdown } from '@/components/dropdown/Dropdown'
 import { EMAIL, PHONE_NUM, TELEGRAM } from '@/common/constants'
-import { Link } from 'react-router-dom';
 
 import searchImg from '@/img/search.png'
 import accountImg from '@/img/account.png'
-import menuIMG from '@/img/menu.png'
+import hamburgerIMG from '@/img/hamburger.png'
 import NPIMG from '@/img/NP.png'
 import UPIMG from '@/img/UP.png'
 import MeestIMG from '@/img/Meest.png'
@@ -14,7 +13,6 @@ import LocationIMG from '@/img/location.png'
 import phoneIMG from '@/img/phone.png'
 
 import styles from './Header.module.scss'
-import { routes } from '@/common/routes';
 
 export const Header = () => {
   const [isHamburger, setIsHamburger] = useState(false)
@@ -45,7 +43,12 @@ export const Header = () => {
             <ul>
               <li>
                 {' '}
-                <img className={styles.info_post_icon} src={NPIMG} alt="Nova poshta" /> Нова пошта
+                <img
+                  className={styles.info_post_icon}
+                  src={NPIMG}
+                  alt="Nova poshta"
+                />{' '}
+                Нова пошта
               </li>
               <li>
                 {' '}
@@ -84,15 +87,20 @@ export const Header = () => {
           <input className={styles.input} type="text" placeholder="Я шукаю ..." />
           <img src={searchImg} className={styles.input_icon} alt="search" />
         </form>
-        <Link to={routes.login} className={styles.account} onClick={toggleDropdown}>
+        <div className={styles.account} onClick={toggleDropdown}>
           <img className={styles.account_icon} src={accountImg} alt="account" />
           <div className={styles.account_text}>Привіт, Ім'я</div>
-          {isDropdown && <Dropdown/>}
-        </Link>
-        <div className={styles.menu}>
-          <img className={styles.menu_icon} src={menuIMG} alt="menu" onClick={handlerClick} />
+          {isDropdown && <Dropdown />}
         </div>
-        {isHamburger && <Menu closeMenu={handlerClick} />}
+        <div className={styles.hamburger}>
+          <img
+            className={styles.hamburger_icon}
+            src={hamburgerIMG}
+            alt="menu"
+            onClick={handlerClick}
+          />
+        </div>
+        {isHamburger && <Hamburger closeHamburger={handlerClick} />}
       </header>
     </div>
   )
