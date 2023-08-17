@@ -65,3 +65,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config("EMAIL_ID", cast=str)
 EMAIL_HOST_PASSWORD = config("EMAIL_PW", cast=str)
+
+DEFAULT_EMAIL = config("DEFAULT_EMAIL", cast=str)

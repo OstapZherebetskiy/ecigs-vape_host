@@ -10,7 +10,6 @@ import logging
 log = logging.getLogger(__name__)
 
 
-
 @receiver([post_save,], dispatch_uid="signal_update_stock_count_post_save", sender=OrderGoods)
 def signal_update_stock_count_post_save(sender, instance, created, **kwargs):
     pass
