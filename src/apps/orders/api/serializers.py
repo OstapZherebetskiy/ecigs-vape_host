@@ -18,7 +18,7 @@ class OrderGoodsSerializer(serializers.ModelSerializer):
         if good.in_stock and good.stock_count >= attrs['count']:
             return resp
         else:
-            raise_ecigs_exception(status_code=400, detail=f"You want to buy more goods than we have. There are only {good.stock_count} pieces of {good.name} left",
+            raise_ecigs_exception(status_code=404, detail=f"You want to buy more goods than we have. There are only {good.stock_count} pieces of {good.name} left",
                                   error_type='Goods count error', extra={"good_id": good.id})
 
     class Meta:

@@ -49,7 +49,7 @@ def handle_ecigs_exceptions(cls):
 
             @_handle_ecigs_exceptions  # decorator to catch thrown atidls exception and return proper response
             def raise_method_not_allowed_exception(self, request, pk=None):  # will be called for not allowed methods
-                raise_ecigs_exception(400, 'Cannot perform this action', 'method_not_allowed', f'allowed methods {self.included_methods}')
+                raise_ecigs_exception(404, 'Cannot perform this action', 'method_not_allowed', f'allowed methods {self.included_methods}')
 
             self.included_methods = {
                 method for method in self.METHODS if method in dir(self) and callable(getattr(self, method))

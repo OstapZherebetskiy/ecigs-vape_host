@@ -64,5 +64,5 @@ class OrderGoods(models.Model, DirtyFieldsMixin):
             self.good.save()
             super().save(*args, **kwargs)
         else:
-            raise_ecigs_exception(status_code=400, detail=f"You want to buy more goods than we have. There are only {self.good.stock_count} pieces of {self.good.name} left",
+            raise_ecigs_exception(status_code=404, detail=f"You want to buy more goods than we have. There are only {self.good.stock_count} pieces of {self.good.name} left",
                                   error_type='Goods count error', extra={"good_id": self.good.id})
