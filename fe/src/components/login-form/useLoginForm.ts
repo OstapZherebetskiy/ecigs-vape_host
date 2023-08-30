@@ -13,8 +13,8 @@ export const useLoginForm = () => {
     [InputType.passwordSecond]: false,
   })
 
-  const [values, setValues] = useState(defValues)
-  const [errors, setErrors] = useState(defErrorValues)
+  const [values, setValues] = useState({...defValues})
+  const [errors, setErrors] = useState({...defErrorValues})
 
   const handleShowPass = (name: InputType.passwordFirst | InputType.passwordSecond) => {
     setIsShowPass({ ...isShowPass, [name]: !isShowPass[name] })
@@ -32,24 +32,6 @@ export const useLoginForm = () => {
         console.log('register')
 
         createNewAccount({ values, setIsNewUser, setValues })
-        // try {
-        //   const data = await accountsApi.registerNewUser(values)
-
-        //   console.log(data)
-
-        //   setIsNewUser(false)
-        //   setValues({
-        //     ...defValues,
-        //     [InputType.passwordFirst]: values[InputType.passwordFirst],
-        //     [InputType.login]: values[InputType.login],
-        //   })
-        // } catch (e) {
-        //   const { message } = e as Error
-
-        //   console.log(e);
-
-        //   console.error('Can`t register new user: ' + message)
-        // }
       }
 
       return
@@ -98,8 +80,9 @@ export const useLoginForm = () => {
   }
 
   const handlerNewUser = () => {
-    if (isNewUser) {
-      setErrors(defErrorValues)
+    if (!isNewUser) {
+      setErrors({...defErrorValues})
+      setValues({...defValues})
     }
 
     setIsNewUser(!isNewUser)

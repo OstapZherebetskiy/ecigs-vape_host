@@ -24,21 +24,23 @@ export const notificationSlice = createSlice({
   initialState,
   reducers: {
     addNotification: (state, action: PayloadAction<NotificationPayload>) => {
-      const { removeNotification } = notificationSlice.actions
+      const nId = notificationId
 
-      state.data.push({ ...action.payload, id: notificationId })
+      state.data.push({ ...action.payload, id: nId })
 
       // NOTE: remove notification after 5 sec
       const removeNotificationTime = 5000
       setTimeout(() => {
-        console.log(notificationId)
+        console.log(nId, 'remove')
 
-        removeNotification(notificationId)
+        state.data = state.data.filter(({ id }) => nId !== id)
       }, removeNotificationTime)
 
       notificationId++
     },
     removeNotification: (state, action: PayloadAction<number>) => {
+      console.log(action.payload, 'filter')
+
       state.data = state.data.filter(({ id }) => id !== action.payload)
     },
   },
@@ -47,3 +49,9 @@ export const notificationSlice = createSlice({
 export const { addNotification } = notificationSlice.actions
 
 export default notificationSlice.reducer
+
+// {
+//   "email": [
+//       "user with this E-mail already exists."
+//   ]
+// }

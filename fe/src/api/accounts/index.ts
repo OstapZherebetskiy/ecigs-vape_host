@@ -2,7 +2,7 @@ import { fetchJson } from '@/common/fetchJson'
 import { User } from './types'
 import { InputType, LoginValues } from '@/components/login-form/utils'
 
-const registerNewUser = async (data: LoginValues): Promise<User[]> =>
+const registerNewUser = async (data: LoginValues): Promise<User> =>
   await fetchJson('/api/account/', {
     method: 'POST',
     body: JSON.stringify({

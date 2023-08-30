@@ -103,7 +103,6 @@ export const LoginForm = () => {
 
         <label
           className={cn(style.newUser, {
-            // [style.isInvalid]: true,
             [style.isInvalid]: errors[InputType.older18].isInvalid,
           })}
         >

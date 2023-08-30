@@ -3,6 +3,8 @@ import { notificationSlice } from '@/common-ui/notification/NotificationSlice'
 import { InputType, LoginValues, defValues } from '@/components/login-form/utils'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+const successMessage = 'Ваш аккаунт успішно створений!'
+
 export const createNewAccount = createAsyncThunk<
   string,
   {
@@ -21,14 +23,20 @@ export const createNewAccount = createAsyncThunk<
 
       console.log(data, 'data')
 
+      if (!data.is_active) {
+        const message = (Object.values(data)[0] as string) || 'Щось пішло не так :('
+
+        dispatch(addNotification({ message, type: 'error' }))
+
+        return rejectWithValue(message)
+      }
+
       setIsNewUser(false)
       setValues({
         ...defValues,
         [InputType.passwordFirst]: values[InputType.passwordFirst],
         [InputType.login]: values[InputType.login],
       })
-
-      const successMessage = 'Ваш аккаунт успішно створений!'
 
       dispatch(addNotification({ message: successMessage, type: 'success' }))
 
@@ -42,7 +50,7 @@ export const createNewAccount = createAsyncThunk<
 
       dispatch(addNotification({ message, type: 'error' }))
 
-      return rejectWithValue('message')
+      return rejectWithValue(message)
     }
   },
 )
