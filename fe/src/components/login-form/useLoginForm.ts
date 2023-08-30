@@ -2,8 +2,11 @@ import { validateLoginForm } from '@/common/validate'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
 import { accountsApi } from '@/api/accounts'
+import { SessionStorage } from '@/common/constants'
+import { useActions } from '@/hooks/reduxHook'
 
 export const useLoginForm = () => {
+  const { createNewAccount } = useActions()
   const [isNewUser, setIsNewUser] = useState(false)
   const [isShowPass, setIsShowPass] = useState({
     [InputType.passwordFirst]: false,
@@ -28,10 +31,25 @@ export const useLoginForm = () => {
       if (validForm.isValid && values[InputType.older18]) {
         console.log('register')
 
-        const data = await accountsApi.registerNewUser(values)
+        createNewAccount({ values, setIsNewUser, setValues })
+        // try {
+        //   const data = await accountsApi.registerNewUser(values)
 
-        console.log('data')
-        console.log(data)
+        //   console.log(data)
+
+        //   setIsNewUser(false)
+        //   setValues({
+        //     ...defValues,
+        //     [InputType.passwordFirst]: values[InputType.passwordFirst],
+        //     [InputType.login]: values[InputType.login],
+        //   })
+        // } catch (e) {
+        //   const { message } = e as Error
+
+        //   console.log(e);
+
+        //   console.error('Can`t register new user: ' + message)
+        // }
       }
 
       return
@@ -66,6 +84,16 @@ export const useLoginForm = () => {
 
     if (isValid) {
       console.log('login')
+      try {
+        const data = await accountsApi.loginUser(values)
+
+        console.log(data)
+        sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
+      } catch (e) {
+        const { message } = e as Error
+
+        console.error('Can`t login user: ' + message)
+      }
     }
   }
 
