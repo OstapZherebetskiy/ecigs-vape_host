@@ -3,10 +3,13 @@ import cart from '../../img/cart-light.png'
 import price from '../../img/price.png'
 import message from '../../img/message.png'
 import customers from '../../img/customers.png'
+import { Outlet } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export const AdminPage = () => {
   return (
     <section className={style.container}>
+      {/* Comment. Do I need to do a search? */}
       <div className={style.box}>
         <div className={style.sideBar}>
           <div className={style.sideBar_item}>
@@ -28,13 +31,16 @@ export const AdminPage = () => {
         </div>
         <div className={style.tabs}>
           <div className={style.tabs_titles}>
-            <div className={style.tabs_titles_all}>Всі</div>
+            <Link to="/admin/all" className={style.tabs_titles_all}>Усі</Link>
             <div className={style.tabs_titles_new}>Нові</div>
             <div className={style.tabs_titles_accepted}>Прийняті</div>
             <div className={style.tabs_titles_canceled}>Скасовані</div>
             <div className={style.tabs_titles_complited}>Виконані</div>
           </div>
-          <div className={style.tab_active}></div>
+          <div className={style.tab_active}>
+            <Outlet/>
+
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,61 @@
+@import '@/styles/global';
+
+.AllTab {
+  height: 100%;
+  width: 100%;
+  padding: 30px 20px 0 30px;
+
+  background-color: $c-white;
+}
+.dropdown {
+  display: flex;
+  font-size: 16px;
+  width: 240px;
+  height: 60px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  outline: none;
+  justify-content: center;
+
+  align-items: center;
+  &_select {
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+}
+.info {
+  height: 60px;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 150px;
+}
+
+.Order {
+  font-weight: bold;
+  margin-right: 300px;
+}
+
+.Summ {
+  font-weight: bold;
+  margin-right: 80px;
+}
+
+.Customer {
+  font-weight: bold;
+  margin-right: 200px;
+}
+
+.Delivery {
+  font-weight: bold;
+  margin-right: 80px;
+}
+
+.Status {
+  font-weight: bold;
+  margin-right: 100px;
+}
