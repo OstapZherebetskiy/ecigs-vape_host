@@ -4,24 +4,55 @@
   height: 100%;
   width: 100%;
   padding: 30px 20px 0 30px;
-
   background-color: $c-white;
 }
 .dropdown {
   display: flex;
   font-size: 16px;
-  width: 240px;
+  width: 320px;
   height: 60px;
   border: 1px solid #ccc;
-  border-radius: 7px;
+  border-radius: 7px 7px 4px 4px;
   outline: none;
-  justify-content: center;
-
+  justify-content: space-around;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: $c-grey-light;
+  }
   &_select {
     padding: 8px;
     border: none;
     cursor: pointer;
+  }
+  &_text {
+    display: flex;
+    align-items: center;
+  }
+  &_icon {
+    height: 24px;
+    position: relative;
+    left: 5px;
+  }
+  &_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  &_selected {
+    box-sizing: border-box;
+    padding: 10px 10px 10px 22px;
+    cursor: pointer;
+    width: 323px;
+    height: 40px;
+    border: 1px solid #ccc;
+    &:last-child{
+      border-radius: 0 0 7px 7px;
+    }
+    &:hover {
+      background-color: $c-grey-light;
+    }
   }
 }
 .info {

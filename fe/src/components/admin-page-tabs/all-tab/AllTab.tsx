@@ -1,37 +1,30 @@
-import React, { useState } from 'react';
-import style from './AllTab.module.scss';
-
-interface Option {
-  value: string;
-  label: string;
-}
+import React, { useState } from 'react'
+import style from './AllTab.module.scss'
+import dropdown from '../../../img/dropdown.png'
 
 export const AllTab = () => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-
-  const handleOptionChange = (option: string) => {
-    setSelectedOption(option);
-  };
-
-  const options: Option[] = [
-    { value: 'price', label: 'За ціною' },
-    { value: 'date', label: 'За датою' },
-  ];
+  const [isSelected, setIsSelected] = useState<boolean>(false)
+  const toggleDropdown = () => {
+    setIsSelected(!isSelected)
+  }
 
   return (
     <section className={style.AllTab}>
-      <div className={style.dropdown}>Відфільтруйте замовлення
-        <select
-          className={style.dropdown_select}
-          value={selectedOption || ''}
-          onChange={(e) => handleOptionChange(e.target.value)}
-        >
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+      <div onClick={toggleDropdown} className={style.dropdown}>
+        <span className={style.dropdown_text}>Відфільтруйте замовлення</span>
+        <img className={style.dropdown_icon} src={dropdown} alt="dropdown" />
+      </div>
+      <div className={style.dropdown_content}>
+        {isSelected && (
+          <div className={style.dropdown_items}>
+            <div onClick={toggleDropdown} className={style.dropdown_selected}>
+              За ціною
+            </div>
+            <div onClick={toggleDropdown} className={style.dropdown_selected}>
+              За датою
+            </div>
+          </div>
+        )}
       </div>
       {/* Comment. Do I need to do a search? */}
       <div className={style.info}>
@@ -43,6 +36,5 @@ export const AllTab = () => {
         <div className={style.Status}>Статус</div>
       </div>
     </section>
-
-  );
-};
+  )
+}

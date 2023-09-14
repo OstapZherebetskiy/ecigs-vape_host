@@ -51,11 +51,11 @@ background-color: $c-grey;
       cursor: pointer;
   
       &:active {
-        position: fixed;
+     box-sizing: border-box;
         color: blue;
         background-color: $c-white;
         border-radius: 5px 5px 0 0;
-        padding: 45px 0 40px 0;
+        padding: 40px 0 40px 0;
       }
     }
   }
