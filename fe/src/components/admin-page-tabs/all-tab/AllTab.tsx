@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import style from './AllTab.module.scss'
 import dropdown from '../../../img/dropdown.png'
+import { AdminPageCard } from '../admin-page-card/AdminPageCard'
 
 export const AllTab = () => {
   const [isSelected, setIsSelected] = useState<boolean>(false)
@@ -9,7 +10,7 @@ export const AllTab = () => {
   }
 
   return (
-    <section className={style.AllTab}>
+    <section className={style.container}>
       <div onClick={toggleDropdown} className={style.dropdown}>
         <span className={style.dropdown_text}>Відфільтруйте замовлення</span>
         <img className={style.dropdown_icon} src={dropdown} alt="dropdown" />
@@ -35,6 +36,7 @@ export const AllTab = () => {
         <div className={style.Delivery}>Доставка та оплата</div>
         <div className={style.Status}>Статус</div>
       </div>
+      <AdminPageCard></AdminPageCard>
     </section>
   )
 }
