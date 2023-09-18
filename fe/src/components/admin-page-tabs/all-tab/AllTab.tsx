@@ -4,7 +4,7 @@ import dropdown from '../../../img/dropdown.png'
 import { AdminPageCard } from '../admin-page-card/AdminPageCard'
 
 export const AllTab = () => {
-  const [isSelected, setIsSelected] = useState<boolean>(false)
+  const [isSelected, setIsSelected] = useState(false)
   const toggleDropdown = () => {
     setIsSelected(!isSelected)
   }
@@ -27,7 +27,7 @@ export const AllTab = () => {
           </div>
         )}
       </div>
-      {/* Comment. Do I need to do a search? */}
+      {/* NOTE: Comment. Do I need to do a search? */}
       <div className={style.info}>
         <input className={style.checkbox} type="checkbox" />
         <div className={style.Order}>Замовлення</div>

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 export const AdminPage = () => {
   return (
     <section className={style.container}>
-      {/* Comment. Do I need to do a search? */}
+      {/* NOTE Comment. Do I need to do a search? */}
       <div className={style.box}>
         <div className={style.sideBar}>
           <div className={style.sideBar_item}>

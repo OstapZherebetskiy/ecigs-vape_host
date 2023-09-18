@@ -1,9 +1,10 @@
 import React from 'react'
 import style from './AdminPageCard.module.scss'
 import plus from '../../../img/plus.png'
-import blank from '../../../img/blank.png'
-import wallet from '../../../img/wallet.png'
-import van from '../../../img/van.png'
+import blank from '@/img/blank.png'
+import wallet from '@/img/wallet.png'
+import van from '@/img/van.png'
+
 export const AdminPageCard = () => {
   return (
     <section className={style.container}>

@@ -3,8 +3,8 @@ import { ItemsGrid } from '@/components/items-grid'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '@/pages/login-page'
 import { AdminPage } from '@/pages/admin-page'
-import { routes } from './common/routes';
-import { AllTab } from './components/admin-page-tabs/all-tab/AllTab'
+import { routes } from '@/common/routes';
+import { AllTab } from '@/components/admin-page-tabs/all-tab/AllTab'
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path={routes.main} element={<Layout />}>
           <Route path={routes.main} element={<ItemsGrid />} />
         </Route>
+        
         <Route path={routes.admin} element={<AdminPage/>}>
           <Route path={routes.all} element={<AllTab/>}/>
         </Route>
