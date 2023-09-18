@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 import customerAccountReducer, {
   createNewAccount,
+  loginIntoAccount,
   customerAccountSlice,
 } from './slices/customerAccount/customerAccountSlice'
 import notificationReducer, {
@@ -22,6 +23,7 @@ export const allActions = {
   ...notificationSlice.actions,
 
   //async action
+  loginIntoAccount,
   createNewAccount,
 }
 

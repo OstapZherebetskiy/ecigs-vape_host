@@ -1,5 +1,5 @@
 import { fetchJson } from '@/common/fetchJson'
-import { User } from './types'
+import { Tokens, User } from './types'
 import { InputType, LoginValues } from '@/components/login-form/utils'
 
 const registerNewUser = async (data: LoginValues): Promise<User> =>
@@ -14,7 +14,7 @@ const registerNewUser = async (data: LoginValues): Promise<User> =>
     }),
   })
 
-const loginUser = async (data: LoginValues): Promise<User[]> =>
+const loginUser = async (data: LoginValues): Promise<Tokens> =>
   await fetchJson('/api/token/', {
     method: 'POST',
     body: JSON.stringify({
@@ -23,4 +23,9 @@ const loginUser = async (data: LoginValues): Promise<User[]> =>
     }),
   })
 
-export const accountsApi = { registerNewUser, loginUser }
+const getUserData = async (access: string): Promise<User> =>
+  await fetchJson('/api/account', {
+    headers: { Authorization: 'Bearer ' + access },
+  })
+
+export const accountsApi = { registerNewUser, loginUser, getUserData }

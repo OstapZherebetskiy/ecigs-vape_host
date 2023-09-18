@@ -14,3 +14,8 @@ export type User = {
   about: string
   default_department: string
 }
+
+export type Tokens = {
+  access: string
+  refresh: string
+}

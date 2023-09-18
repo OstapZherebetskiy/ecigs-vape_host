@@ -1,20 +1,20 @@
 import { validateLoginForm } from '@/common/validate'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
-import { accountsApi } from '@/api/accounts'
-import { SessionStorage } from '@/common/constants'
+// import { accountsApi } from '@/api/accounts'
+// import { SessionStorage } from '@/common/constants'
 import { useActions } from '@/hooks/reduxHook'
 
 export const useLoginForm = () => {
-  const { createNewAccount } = useActions()
+  const { createNewAccount, loginIntoAccount } = useActions()
   const [isNewUser, setIsNewUser] = useState(false)
   const [isShowPass, setIsShowPass] = useState({
     [InputType.passwordFirst]: false,
     [InputType.passwordSecond]: false,
   })
 
-  const [values, setValues] = useState({...defValues})
-  const [errors, setErrors] = useState({...defErrorValues})
+  const [values, setValues] = useState({ ...defValues })
+  const [errors, setErrors] = useState({ ...defErrorValues })
 
   const handleShowPass = (name: InputType.passwordFirst | InputType.passwordSecond) => {
     setIsShowPass({ ...isShowPass, [name]: !isShowPass[name] })
@@ -66,23 +66,25 @@ export const useLoginForm = () => {
 
     if (isValid) {
       console.log('login')
-      try {
-        const data = await accountsApi.loginUser(values)
+      // try {
+      //   const data = await accountsApi.loginUser(values)
 
-        console.log(data)
-        sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
-      } catch (e) {
-        const { message } = e as Error
+      //   console.log(data)
+      //   sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
+      // } catch (e) {
+      //   const { message } = e as Error
 
-        console.error('Can`t login user: ' + message)
-      }
+      //   console.error('Can`t login user: ' + message)
+      // }
+
+      loginIntoAccount({ values })
     }
   }
 
   const handlerNewUser = () => {
     if (!isNewUser) {
-      setErrors({...defErrorValues})
-      setValues({...defValues})
+      setErrors({ ...defErrorValues })
+      setValues({ ...defValues })
     }
 
     setIsNewUser(!isNewUser)
