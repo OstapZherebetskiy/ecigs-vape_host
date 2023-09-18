@@ -1,0 +1,52 @@
+@import '@/styles/global';
+
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 30px 20px 0 0px;
+  background-color: $c-white;
+  display: flex;
+}
+
+.info {
+  &_img {
+    width: 190px;
+    max-width: 190px;
+    margin-right: 10px;
+  }
+  &_order {
+    width: 400px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &_number {
+      color: blue;
+    }
+    &_period {
+      display: flex;
+      width: 100px;
+    }
+    &_date {
+      margin-left: 10px;
+    }
+    &_plus {
+      height: 55px;
+      width: 55px;
+      opacity: 0.5;
+    }
+  }
+  &_delivery {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    position: relative;
+    gap: 20px;
+  }
+}
+
+.icon_delivery {
+  position: absolute;
+  left: -20px;
+  height: 15px;
+}
