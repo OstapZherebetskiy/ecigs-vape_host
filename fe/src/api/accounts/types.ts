@@ -18,4 +18,5 @@ export type User = {
 export type Tokens = {
   access: string
   refresh: string
+  detail?: string
 }

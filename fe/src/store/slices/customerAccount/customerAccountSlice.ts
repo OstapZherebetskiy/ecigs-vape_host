@@ -4,6 +4,8 @@ import { InputType, LoginValues, defValues } from '@/components/login-form/utils
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Tokens, User } from '@/api/accounts/types'
 import { SessionStorage } from '@/common/constants'
+import { routes } from '@/common/routes'
+import { NavigateFunction } from 'react-router';
 
 const successMessage = 'Ваш аккаунт успішно створений!'
 
@@ -55,11 +57,11 @@ export const createNewAccount = createAsyncThunk<
 
 export const loginIntoAccount = createAsyncThunk<
   Tokens,
-  { values: LoginValues },
+  { values: LoginValues; navigateTo: NavigateFunction },
   { rejectValue: string }
 >(
   'customerAccountSlice/loginIntoAccount',
-  async ({ values }, { rejectWithValue, dispatch }) => {
+  async ({ values, navigateTo }, { rejectWithValue, dispatch }) => {
     const { addNotification } = notificationSlice.actions
 
     console.log(values, 'login, pass')
@@ -68,9 +70,14 @@ export const loginIntoAccount = createAsyncThunk<
       const data = await accountsApi.loginUser(values)
 
       console.log(data)
+
+      if (data.detail) {
+        throw new Error(data.detail)
+      }
+
       sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
 
-      // todo redirect to home page
+      navigateTo(routes.main)
 
       dispatch(getUserData({ access: data.access }))
 

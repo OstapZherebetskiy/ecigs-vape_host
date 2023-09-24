@@ -4,8 +4,10 @@ import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
 // import { accountsApi } from '@/api/accounts'
 // import { SessionStorage } from '@/common/constants'
 import { useActions } from '@/hooks/reduxHook'
+import { useNavigate } from 'react-router';
 
 export const useLoginForm = () => {
+  const navigateTo = useNavigate()
   const { createNewAccount, loginIntoAccount } = useActions()
   const [isNewUser, setIsNewUser] = useState(false)
   const [isShowPass, setIsShowPass] = useState({
@@ -77,7 +79,7 @@ export const useLoginForm = () => {
       //   console.error('Can`t login user: ' + message)
       // }
 
-      loginIntoAccount({ values })
+      loginIntoAccount({ values, navigateTo })
     }
   }
 
