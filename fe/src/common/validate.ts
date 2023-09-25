@@ -28,7 +28,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
 
@@ -50,7 +50,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
 
@@ -80,7 +80,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
 
@@ -94,7 +94,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
 
@@ -109,7 +109,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
 
@@ -126,7 +126,7 @@ export const validateLoginForm = (values: LoginValues) => {
           break
         }
 
-        isValid = true
+        isValid = true && isValid
         errors[key] = defErrorBody
         break
     }

@@ -1,8 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import quotesDataReducer, { quotesDataSlice } from './slices/user/userSlice'
+
+import customerAccountReducer, {
+  createNewAccount,
+  loginIntoAccount,
+  customerAccountSlice,
+} from './slices/customerAccount/customerAccountSlice'
+import notificationReducer, {
+  notificationSlice,
+} from '@/common-ui/notification/NotificationSlice'
 
 const rootReducer = combineReducers({
-  quotesDataReducer,
+  customerAccountReducer,
+  notificationReducer,
 })
 
 export const store = configureStore({
@@ -10,9 +19,12 @@ export const store = configureStore({
 })
 
 export const allActions = {
-  ...quotesDataSlice.actions,
+  ...customerAccountSlice.actions,
+  ...notificationSlice.actions,
 
   //async action
+  loginIntoAccount,
+  createNewAccount,
 }
 
 export type RootState = ReturnType<typeof store.getState>
