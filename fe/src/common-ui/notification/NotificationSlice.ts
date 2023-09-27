@@ -31,16 +31,12 @@ export const notificationSlice = createSlice({
       // NOTE: remove notification after 5 sec
       const removeNotificationTime = 5000
       setTimeout(() => {
-        console.log(nId, 'remove')
-
         state.data = state.data.filter(({ id }) => nId !== id)
       }, removeNotificationTime)
 
       notificationId++
     },
     removeNotification: (state, action: PayloadAction<number>) => {
-      console.log(action.payload, 'filter')
-
       state.data = state.data.filter(({ id }) => id !== action.payload)
     },
   },
