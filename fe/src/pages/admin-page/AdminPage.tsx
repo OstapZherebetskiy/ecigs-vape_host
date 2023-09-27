@@ -1,14 +1,19 @@
 import style from './AdminPage.module.scss'
-import cart from '../../img/cart-light.png'
-import price from '../../img/price.png'
-import message from '../../img/message.png'
-import customers from '../../img/customers.png'
+import cart from '@/img/cart-light.png'
+import price from '@/img/price.png'
+import message from '@/img/message.png'
+import customers from '@/img/customers.png'
 import { Outlet } from 'react-router'
 import { Link } from 'react-router-dom'
 
+
 export const AdminPage = () => {
+  
   return (
+    
     <section className={style.container}>
+   
+       
       {/* NOTE Comment. Do I need to do a search? */}
       <div className={style.box}>
         <div className={style.sideBar}>
