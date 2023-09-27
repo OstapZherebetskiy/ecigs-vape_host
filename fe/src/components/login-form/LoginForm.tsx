@@ -32,6 +32,8 @@ export const LoginForm = () => {
         showError={errors[InputType.login].isInvalid}
         errorMessage={errors[InputType.login].message}
         required={isNewUser}
+        value={values[InputType.login]}
+        // TODO add value
       />
       <div className={style.pass__box}>
         <TextField
@@ -42,6 +44,7 @@ export const LoginForm = () => {
           showError={errors[InputType.passwordFirst].isInvalid}
           errorMessage={errors[InputType.passwordFirst].message}
           required={isNewUser}
+          value={values[InputType.passwordFirst]}
         />
         <img
           className={style.pass_btn}
@@ -65,6 +68,7 @@ export const LoginForm = () => {
             showError={errors[InputType.passwordSecond].isInvalid}
             errorMessage={errors[InputType.passwordSecond].message}
             required={isNewUser}
+            value={values[InputType.passwordSecond]}
           />
           <img
             className={style.pass_btn}
@@ -81,6 +85,7 @@ export const LoginForm = () => {
           showError={errors[InputType.firstName].isInvalid}
           errorMessage={errors[InputType.firstName].message}
           required={isNewUser}
+          value={values[InputType.firstName]}
         />
 
         <TextField
@@ -90,6 +95,7 @@ export const LoginForm = () => {
           showError={errors[InputType.lastName].isInvalid}
           errorMessage={errors[InputType.lastName].message}
           required={isNewUser}
+          value={values[InputType.lastName]}
         />
 
         <TextField
@@ -99,11 +105,11 @@ export const LoginForm = () => {
           showError={errors[InputType.phone].isInvalid}
           errorMessage={errors[InputType.phone].message}
           required={isNewUser}
+          value={values[InputType.phone]}
         />
 
         <label
           className={cn(style.newUser, {
-            // [style.isInvalid]: true,
             [style.isInvalid]: errors[InputType.older18].isInvalid,
           })}
         >

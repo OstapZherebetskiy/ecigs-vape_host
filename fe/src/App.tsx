@@ -3,28 +3,29 @@ import { ItemsGrid } from '@/components/items-grid'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '@/pages/login-page'
 import { AdminPage } from '@/pages/admin-page'
-import { routes } from '@/common/routes';
+import { routes } from '@/common/routes'
 import { AllTab } from '@/components/admin-page-tabs/all-tab/AllTab'
-
-
+import { Notification } from '@/common-ui/notification'
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={routes.login} element={<LoginPage />} />
-        <Route path={routes.main} element={<Layout />}>
-          <Route path={routes.main} element={<ItemsGrid />} />
-        </Route>
-        
-        <Route path={routes.admin} element={<AdminPage/>}>
-          <Route path={routes.all} element={<AllTab/>}/>
-          <Route path="" element={<Navigate to="all"/>} />
-          <Route path="*" element={<Navigate to="all"/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path={routes.login} element={<LoginPage />} />
+          <Route path={routes.main} element={<Layout />}>
+            <Route path={routes.main} element={<ItemsGrid />} />
+          </Route>
+
+          <Route path={routes.admin} element={<AdminPage />}>
+            <Route path={routes.all} element={<AllTab />} />
+            <Route path="" element={<Navigate to="all" />} />
+            <Route path="*" element={<Navigate to="all" />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Notification />
+    </>
   )
 }
 
