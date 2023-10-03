@@ -1,6 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-let notificationId = 1
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type NotificationPayload = {
   message: string
@@ -10,6 +8,26 @@ export type NotificationPayload = {
 type NotificationType = NotificationPayload & {
   id: number
 }
+
+// NOTE: remove notification after 10 sec
+const removeNotificationTime = 10000
+
+export const addAndRemoveNotification = createAsyncThunk<string, NotificationPayload>(
+  'notification/addNotification',
+  async (values, { dispatch }) => {
+    const { addNotification, removeNotification } = notificationSlice.actions
+
+    const nId = new Date().getTime()
+
+    dispatch(addNotification({ ...values, id: nId }))
+
+    setTimeout(() => {
+      dispatch(removeNotification(nId))
+    }, removeNotificationTime)
+
+    return 'successMessage'
+  },
+)
 
 type initialStateType = {
   data: NotificationType[]
@@ -23,24 +41,21 @@ export const notificationSlice = createSlice({
   name: 'notification',
   initialState,
   reducers: {
-    addNotification: (state, action: PayloadAction<NotificationPayload>) => {
-      const nId = notificationId
+    addNotification: (
+      state,
+      action: PayloadAction<NotificationPayload | NotificationType>,
+    ) => {
+      const notification = { ...action.payload } as NotificationType
 
-      state.data.push({ ...action.payload, id: nId })
+      if (!notification.id) {
+        const nId = new Date().getTime()
 
-      // NOTE: remove notification after 5 sec
-      const removeNotificationTime = 5000
-      setTimeout(() => {
-        console.log(nId, 'remove')
+        notification.id = nId
+      }
 
-        state.data = state.data.filter(({ id }) => nId !== id)
-      }, removeNotificationTime)
-
-      notificationId++
+      state.data.push(notification)
     },
     removeNotification: (state, action: PayloadAction<number>) => {
-      console.log(action.payload, 'filter')
-
       state.data = state.data.filter(({ id }) => id !== action.payload)
     },
   },

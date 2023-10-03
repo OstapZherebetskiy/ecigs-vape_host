@@ -6,6 +6,7 @@ import customerAccountReducer, {
   customerAccountSlice,
 } from './slices/customerAccount/customerAccountSlice'
 import notificationReducer, {
+  addAndRemoveNotification,
   notificationSlice,
 } from '@/common-ui/notification/NotificationSlice'
 
@@ -25,6 +26,7 @@ export const allActions = {
   //async action
   loginIntoAccount,
   createNewAccount,
+  addAndRemoveNotification,
 }
 
 export type RootState = ReturnType<typeof store.getState>

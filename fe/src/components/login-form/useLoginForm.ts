@@ -4,7 +4,7 @@ import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
 // import { accountsApi } from '@/api/accounts'
 // import { SessionStorage } from '@/common/constants'
 import { useActions } from '@/hooks/reduxHook'
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router'
 
 export const useLoginForm = () => {
   const navigateTo = useNavigate()
@@ -47,10 +47,10 @@ export const useLoginForm = () => {
         isInvalid: true,
         message: 'Небхідно вказати електронну пошту',
       }
-      isValid = false
+      isValid = isValid && false
     } else {
       loginDataValid[InputType.login] = defErrorBody
-      isValid = true
+      isValid = isValid && true
     }
 
     if (!values[InputType.passwordFirst] && isValid) {
@@ -58,10 +58,10 @@ export const useLoginForm = () => {
         isInvalid: true,
         message: 'Небхідно вказати пароль',
       }
-      isValid = false
+      isValid = isValid && false
     } else {
       loginDataValid[InputType.passwordFirst] = defErrorBody
-      isValid = true
+      isValid = isValid && true
     }
 
     setErrors(loginDataValid)

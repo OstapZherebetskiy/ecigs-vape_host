@@ -1,11 +1,14 @@
 import { accountsApi } from '@/api/accounts'
-import { notificationSlice } from '@/common-ui/notification/NotificationSlice'
+import {
+  addAndRemoveNotification,
+  notificationSlice,
+} from '@/common-ui/notification/NotificationSlice'
 import { InputType, LoginValues, defValues } from '@/components/login-form/utils'
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Tokens, User } from '@/api/accounts/types'
 import { SessionStorage } from '@/common/constants'
 import { routes } from '@/common/routes'
-import { NavigateFunction } from 'react-router';
+import { NavigateFunction } from 'react-router'
 
 const successMessage = 'Ваш аккаунт успішно створений!'
 
@@ -20,15 +23,13 @@ export const createNewAccount = createAsyncThunk<
 >(
   'customerAccountSlice/createNewAccount',
   async ({ setValues, values, setIsNewUser }, { rejectWithValue, dispatch }) => {
-    const { addNotification } = notificationSlice.actions
-
     try {
       const data = await accountsApi.registerNewUser(values)
 
       if (!data.is_active) {
         const message = (Object.values(data)[0] as string) || 'Щось пішло не так :('
 
-        dispatch(addNotification({ message, type: 'error' }))
+        dispatch(addAndRemoveNotification({ message, type: 'error' }))
 
         return rejectWithValue(message)
       }
@@ -40,7 +41,7 @@ export const createNewAccount = createAsyncThunk<
         [InputType.login]: values[InputType.login],
       })
 
-      dispatch(addNotification({ message: successMessage, type: 'success' }))
+      dispatch(addAndRemoveNotification({ message: successMessage, type: 'success' }))
 
       return successMessage
     } catch (e) {
@@ -48,7 +49,7 @@ export const createNewAccount = createAsyncThunk<
 
       console.error('Can`t register new user: ' + message)
 
-      dispatch(addNotification({ message, type: 'error' }))
+      dispatch(addAndRemoveNotification({ message, type: 'error' }))
 
       return rejectWithValue(message)
     }
@@ -62,8 +63,6 @@ export const loginIntoAccount = createAsyncThunk<
 >(
   'customerAccountSlice/loginIntoAccount',
   async ({ values, navigateTo }, { rejectWithValue, dispatch }) => {
-    const { addNotification } = notificationSlice.actions
-
     console.log(values, 'login, pass')
 
     try {
@@ -87,7 +86,7 @@ export const loginIntoAccount = createAsyncThunk<
 
       console.error('Can`t log in new user: ' + message)
 
-      dispatch(addNotification({ message, type: 'error' }))
+      dispatch(addAndRemoveNotification({ message, type: 'error' }))
 
       return rejectWithValue(message)
     }
