@@ -4,6 +4,7 @@ import customerAccountReducer, {
   createNewAccount,
   loginIntoAccount,
   customerAccountSlice,
+  getUserData,
 } from './slices/customerAccount/customerAccountSlice'
 import notificationReducer, {
   addAndRemoveNotification,
@@ -27,6 +28,7 @@ export const allActions = {
   loginIntoAccount,
   createNewAccount,
   addAndRemoveNotification,
+  getUserData,
 }
 
 export type RootState = ReturnType<typeof store.getState>

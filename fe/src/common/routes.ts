@@ -1,7 +1,12 @@
-export enum routes {
-  login = '/login',
-  list = '/list',
-  main = '/',
-  admin = '/admin',
-  all = 'all',
+export const routes = {
+  login: '/login',
+  list: '/list',
+  main: '/',
+  layout: '/',
+  admin: 'admin',
+  account: '/account',
+  all: 'all',
+
+  _All: '*',
+  _Empty: '',
 }
