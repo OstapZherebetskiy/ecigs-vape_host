@@ -27,11 +27,9 @@ export const useLoginForm = () => {
 
     if (isNewUser) {
       const validForm = validateLoginForm(values)
-      console.log(validForm)
       setErrors(validForm.errors)
 
       if (validForm.isValid && values[InputType.older18]) {
-        console.log('register')
 
         createNewAccount({ values, setIsNewUser, setValues })
       }
@@ -67,18 +65,6 @@ export const useLoginForm = () => {
     setErrors(loginDataValid)
 
     if (isValid) {
-      console.log('login')
-      // try {
-      //   const data = await accountsApi.loginUser(values)
-
-      //   console.log(data)
-      //   sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
-      // } catch (e) {
-      //   const { message } = e as Error
-
-      //   console.error('Can`t login user: ' + message)
-      // }
-
       loginIntoAccount({ values, navigateTo })
     }
   }

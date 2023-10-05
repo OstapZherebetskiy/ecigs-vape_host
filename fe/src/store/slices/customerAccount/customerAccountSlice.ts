@@ -5,7 +5,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Tokens, User } from '@/api/accounts/types'
 import { SessionStorage } from '@/common/constants'
 import { routes } from '@/common/routes'
-import { NavigateFunction } from 'react-router';
+import { NavigateFunction } from 'react-router'
 
 const successMessage = 'Ваш аккаунт успішно створений!'
 
@@ -64,12 +64,8 @@ export const loginIntoAccount = createAsyncThunk<
   async ({ values, navigateTo }, { rejectWithValue, dispatch }) => {
     const { addNotification } = notificationSlice.actions
 
-    console.log(values, 'login, pass')
-
     try {
       const data = await accountsApi.loginUser(values)
-
-      console.log(data)
 
       if (data.detail) {
         throw new Error(data.detail)
@@ -103,12 +99,8 @@ export const getUserData = createAsyncThunk<
   async ({ access }, { rejectWithValue, dispatch }) => {
     const { addNotification } = notificationSlice.actions
 
-    console.log(access, 'login, pass')
-
     try {
       const data = await accountsApi.getUserData(access)
-
-      console.log('user', data)
 
       return data
     } catch (e) {
@@ -125,12 +117,14 @@ type InitialStateType = {
   isLoading: boolean
   tokens: Tokens | null
   userData: User | null
+  isUserLoading: boolean
 }
 
 const initialState: InitialStateType = {
   tokens: null,
   userData: null,
   isLoading: false,
+  isUserLoading: false,
 }
 
 export const customerAccountSlice = createSlice({
@@ -160,6 +154,17 @@ export const customerAccountSlice = createSlice({
     )
     builder.addCase(loginIntoAccount.rejected, (state) => {
       state.isLoading = false
+    })
+
+    builder.addCase(getUserData.pending, (state) => {
+      state.isUserLoading = true
+    })
+    builder.addCase(getUserData.fulfilled, (state, action: PayloadAction<User>) => {
+      state.userData = action.payload
+      state.isUserLoading = false
+    })
+    builder.addCase(getUserData.rejected, (state) => {
+      state.isUserLoading = false
     })
   },
 })
