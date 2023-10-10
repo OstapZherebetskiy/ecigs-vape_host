@@ -1,3 +1,10 @@
+@keyframes alertShow {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
 .alert-placeholder {
   width: 100%;
   margin: 0 auto;
@@ -33,6 +40,8 @@
   -moz-animation: alertShow 420ms;
   -o-animation: alertShow 420ms;
   animation: alertShow 420ms;
+  transform-origin: top;
+  transform: scaleY(1);
 }
 
 .error {

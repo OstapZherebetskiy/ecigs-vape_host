@@ -21,6 +21,7 @@ export const Notification = () => {
           >
             <img src={closeIcon} alt="X" />
           </button>
+
           {/* NOTE: for displaying html content in message */}
           <p dangerouslySetInnerHTML={{ __html: message }} />
         </div>

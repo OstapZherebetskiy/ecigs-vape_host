@@ -7,6 +7,7 @@ import customerAccountReducer, {
   getUserData,
 } from './slices/customerAccount/customerAccountSlice'
 import notificationReducer, {
+  addAndRemoveNotification,
   notificationSlice,
 } from '@/common-ui/notification/NotificationSlice'
 
@@ -26,6 +27,7 @@ export const allActions = {
   //async action
   loginIntoAccount,
   createNewAccount,
+  addAndRemoveNotification,
   getUserData,
 }
 
