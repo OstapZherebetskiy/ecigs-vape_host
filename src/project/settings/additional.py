@@ -6,6 +6,7 @@ from decouple import config
 
 
 REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'project.utils.exception_handler.custom_exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -65,3 +66,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config("EMAIL_ID", cast=str)
 EMAIL_HOST_PASSWORD = config("EMAIL_PW", cast=str)
+
+DEFAULT_EMAIL = config("DEFAULT_EMAIL", cast=str)

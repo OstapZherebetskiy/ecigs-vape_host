@@ -1,0 +1,65 @@
+@import '../../styles/global.scss';
+
+.container {
+  margin-inline: auto;
+  height: 300px;
+  max-width: $w-desktop;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $c-grey-b;
+
+  @media (max-width: $w-notepad) {
+    flex-direction: column;
+  }
+}
+
+.items {
+  &_box {
+    position: absolute;
+    left: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    & a {
+      text-decoration: none;
+      color: black;
+      margin-top: 15px;
+    }
+
+    @media (max-width: $w-notepad) {
+      position: static; 
+      align-items: center;
+      margin-top: 15px; 
+    }
+  }
+
+  &_logo {
+    &_img {
+      height: 80px;
+    }
+  }
+}
+
+.info_box {
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  background-color: white;
+  max-width: 400px;
+  height: 170px;
+  border: 1px solid #cccccc;
+  color: $c-black;
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 15px;
+  line-height: 14px;
+
+  @media (max-width: $w-notepad) {
+    margin-top: 20px;
+  }
+  
+}

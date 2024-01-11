@@ -1,0 +1,62 @@
+@import '@/styles/global';
+.box {
+  display: flex;
+}
+.sideBar {
+  padding-top: 20px;
+  width: 220px;
+  height: 100ch;
+  background-color: $c-main-blue;
+  color: $c-grey-light;
+
+  &_item {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    cursor: pointer;
+    &:active {
+      background-color: $c-main-purple;
+    }
+  }
+}
+.img {
+  height: 24px;
+  margin-inline: 10px;
+}
+.tabs {
+padding: 10px;
+    width: 100%;
+background-color: $c-grey;
+  &_titles {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(225, 225, 225);
+    border-radius: 5px 5px 0 0;
+    color: $c-black;
+    position: relative;
+
+    &_all,
+    &_new,
+    &_accepted,
+    &_canceled,
+    &_complited {
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0px 40px 0px;
+      width: 200px;
+      cursor: pointer;
+  
+      &:active {
+     box-sizing: border-box;
+        color: blue;
+        background-color: $c-white;
+        border-radius: 5px 5px 0 0;
+        padding: 40px 0 40px 0;
+      }
+    }
+  }
+}

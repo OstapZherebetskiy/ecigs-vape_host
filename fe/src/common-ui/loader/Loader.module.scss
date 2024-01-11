@@ -1,0 +1,142 @@
+@keyframes ldio-02d14r67mqrt {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.ldio-02d14r67mqrt>div>div {
+  transform-origin: 50px 50px;
+  animation: ldio-02d14r67mqrt 3.0303030303030303s linear infinite;
+  opacity: 0.9
+}
+
+.ldio-02d14r67mqrt>div>div>div {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px 0 0 0;
+  transform-origin: 50px 50px
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(1) {
+  animation-duration: 0.7575757575757576s
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(1)>div {
+  background: #93dbe9;
+  transform: rotate(0deg);
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(2) {
+  animation-duration: 1.0101010101010102s
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(2)>div {
+  background: #689cc5;
+  transform: rotate(0deg);
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(3) {
+  animation-duration: 1.5151515151515151s
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(3)>div {
+  background: #5e6fa3;
+  transform: rotate(0deg);
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(4) {
+  animation-duration: 3.0303030303030303s
+}
+
+.ldio-02d14r67mqrt>div div:nth-child(4)>div {
+  background: #3b4368;
+  transform: rotate(0deg);
+}
+
+.loadingio-spinner-wedges-27lxq0w2q9x {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ldio-02d14r67mqrt {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+
+.ldio-02d14r67mqrt div {
+  box-sizing: content-box;
+}
+
+.small {
+  width: 25px;
+  height: 25px;
+
+  .ldio-02d14r67mqrt>div>div {
+    transform-origin: 12px 12px;
+  }
+
+  .ldio-02d14r67mqrt>div>div>div {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 9px;
+    height: 9px;
+    border-radius: 9px 0 0 0;
+    transform-origin: 12px 12px
+  }
+}
+
+.normal {
+  width: 50px;
+  height: 50px;
+
+  .ldio-02d14r67mqrt>div>div {
+    transform-origin: 25px 25px;
+  }
+
+  .ldio-02d14r67mqrt>div>div>div {
+    left: 7px;
+    top: 7px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px 0 0 0;
+    transform-origin: 25px 25px
+  }
+}
+
+.big {
+  width: 100px;
+  height: 100px;
+}
+
+
+.mega {
+  width: 200px;
+  height: 200px;
+
+  .ldio-02d14r67mqrt>div>div {
+    transform-origin: 100px 100px;
+  }
+
+  .ldio-02d14r67mqrt>div>div>div {
+    left: 30px;
+    top: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px 0 0 0;
+    transform-origin: 100px 100px
+  }
+}

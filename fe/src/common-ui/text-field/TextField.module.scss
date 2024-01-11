@@ -1,5 +1,42 @@
 @import '@/styles/global';
 
+@keyframes showLabel {
+  from {
+    display: block;
+    opacity: 0;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  to {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    top: -5px;
+    left: 5px;
+  }
+}
+
+@keyframes hideLabel {
+  from {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    top: -5px;
+    left: 5px;
+    font-size: 12px;
+  }
+
+  to {
+    display: block;
+    opacity: 0;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+}
+
 .wrapper {
   position: relative;
   margin-bottom: 8px;
@@ -11,11 +48,9 @@
     border-radius: 4px;
     height: 46px;
 
-
     @media (max-width: $w-tablet) {
       height: 36px;
     }
-
 
     input:focus::-webkit-input-placeholder {
       color: transparent;
@@ -53,28 +88,54 @@
       width: 100%;
       font-size: 15px;
       box-sizing: border-box;
+
+      &::placeholder {
+        font-family: 'Rubik', sans-serif;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    .input:focus {
+      &::placeholder {
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+      }
     }
 
     .input:not(:placeholder-shown)~.label,
     .input:focus~.label {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
+      top: -5px;
+      left: 5px;
+      font-size: 12px;
+
+      animation: showLabel;
+      animation-duration: 0.3s;
+    }
+
+    .input:placeholder-shown:not(:focus)~.label {
+      animation: hideLabel;
+      animation-duration: 0.3s;
+      animation-timing-function: ease-out;
     }
 
     .label {
-      display: none;
+      opacity: 0;
       position: absolute;
-      font-size: 12px;
       padding: 0 3px;
       border-radius: 10px;
-      background-color: #f2f2f2;
-      top: -7px;
-      left: 5px;
+      border-top: 1px solid $c-grey-b;
+      background-color: #fff;
+      top: 50%;
+      left: 2px;
+      transform: translateY(-50%);
+      display: none;
 
-      &.isFocus {
-        display: block;
-      }
+      transition: all 0.3s;
     }
-
   }
 
   .error {
