@@ -1,6 +1,6 @@
 import { Tokens } from '@/api/accounts'
 import { Loader } from '@/common-ui/loader/Loader'
-import { SessionStorage } from '@/common/constants'
+import { LocalStorage } from '@/common/constants'
 import { routes } from '@/common/routes'
 import { useActions, useAppSelector } from '@/hooks/reduxHook'
 import { useEffect } from 'react'
@@ -21,7 +21,7 @@ export const PrivateLayout = ({ isAdmin }: Props) => {
 
   useEffect(() => {
     if (!userData) {
-      const tokens = sessionStorage.getItem(SessionStorage.tokens)
+      const tokens = localStorage.getItem(LocalStorage.tokens)
 
       if (!tokens) {
         addNotification({

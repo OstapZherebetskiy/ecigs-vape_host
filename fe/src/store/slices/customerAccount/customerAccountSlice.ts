@@ -6,7 +6,7 @@ import {
 import { InputType, LoginValues, defValues } from '@/components/login-form/utils'
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Tokens, User } from '@/api/accounts/types'
-import { SessionStorage } from '@/common/constants'
+import { LocalStorage } from '@/common/constants'
 import { routes } from '@/common/routes'
 import { NavigateFunction } from 'react-router'
 
@@ -70,7 +70,7 @@ export const loginIntoAccount = createAsyncThunk<
         throw new Error(data.detail)
       }
 
-      sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(data))
+      localStorage.setItem(LocalStorage.tokens, JSON.stringify(data))
 
       navigateTo(routes.main)
 

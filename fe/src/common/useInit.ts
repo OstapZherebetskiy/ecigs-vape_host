@@ -1,6 +1,6 @@
 import { useActions, useAppSelector } from '@/hooks/reduxHook'
 import { useEffect } from 'react'
-import { SessionStorage } from './constants'
+import { LocalStorage } from './constants'
 import { Tokens } from '@/api/accounts'
 
 export const useInit = () => {
@@ -16,7 +16,7 @@ export const useInit = () => {
   const checkUserAccount = () => {
     if (userData) return
 
-    const tokens = sessionStorage.getItem(SessionStorage.tokens)
+    const tokens = localStorage.getItem(LocalStorage.tokens)
     if (!tokens) return
 
     const { access } = JSON.parse(tokens) as Tokens

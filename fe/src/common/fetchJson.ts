@@ -1,4 +1,4 @@
-import { SessionStorage } from './constants'
+import { LocalStorage } from './constants'
 
 const headers = new Headers({
   accept: 'application/json',
@@ -8,7 +8,7 @@ const headers = new Headers({
 export const fetchJson = async (input: RequestInfo, init: RequestInit = {}) => {
   if (!init.headers) init.headers = headers
 
-  const tokens = sessionStorage.getItem(SessionStorage.tokens)
+  const tokens = localStorage.getItem(LocalStorage.tokens)
 
   if (tokens) {
     const { access } = JSON.parse(tokens)
@@ -40,7 +40,7 @@ export const fetchJson = async (input: RequestInfo, init: RequestInit = {}) => {
       throw Error(dataToken.detail)
     }
 
-    sessionStorage.setItem(SessionStorage.tokens, JSON.stringify(dataToken))
+    localStorage.setItem(LocalStorage.tokens, JSON.stringify(dataToken))
 
     resp = await fetch(input, {
       ...init,

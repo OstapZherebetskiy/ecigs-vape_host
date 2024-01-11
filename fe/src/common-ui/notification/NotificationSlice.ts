@@ -65,8 +65,4 @@ export const { addNotification } = notificationSlice.actions
 
 export default notificationSlice.reducer
 
-// {
-//   "email": [
-//       "user with this E-mail already exists."
-//   ]
-// }
+
