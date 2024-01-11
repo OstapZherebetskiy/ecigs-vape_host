@@ -1,8 +1,6 @@
 import { validateLoginForm } from '@/common/validate'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { InputType, defErrorBody, defErrorValues, defValues } from './utils'
-// import { accountsApi } from '@/api/accounts'
-// import { SessionStorage } from '@/common/constants'
 import { useActions } from '@/hooks/reduxHook'
 import { useNavigate } from 'react-router'
 
